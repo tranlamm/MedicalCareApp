@@ -24,7 +24,7 @@ public class SignInController implements ActionListener {
 			
 			if (taiKhoan.equals("") || matKhau.equals(""))
 			{
-				this.signInView.setText("Vui lòng nhập tài khoản hoặc mật khẩu");
+				this.signInView.setText("Vui lòng nhập tài khoản");
 			}
 			else if (taiKhoan.equals("admin") && matKhau.equals("admin"))
 			{
