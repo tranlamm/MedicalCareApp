@@ -10,7 +10,6 @@ public class Main {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			new SignInView();
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 }
