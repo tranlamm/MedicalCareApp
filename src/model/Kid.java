@@ -5,7 +5,6 @@ import java.util.Date;
 public class Kid extends Person{
 	private String parentName;
 	private String gender;
-	
 
 	public String getParentName() {
 		return parentName;
