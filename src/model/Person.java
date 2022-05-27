@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class  Person {
-	protected String ID; // khóa chính để tìm "String"
+	protected String ID; 
 	protected String lastName; 
 	protected String firstName;
 	protected Date dateOfBirth;
@@ -102,4 +102,13 @@ public class  Person {
 		this.histories = null;
 		this.phoneNum = phoneNum;
 	}
+	public Person(String iD, String lastName, String firstName, String address, String phoneNum, String email) {
+		ID = iD;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.address = address;
+		this.phoneNum = phoneNum;
+		this.email = email;
+	}
+	
 }

@@ -17,5 +17,8 @@ public class Mom extends Person{
 		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum);
 	}
 	
+	public Mom(String id, String lastName, String firstName, String address, String email, String phoneNum) {
+		super(id, lastName, firstName, address, email, phoneNum);
+	}
 
 }
