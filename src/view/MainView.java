@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import controller.NavBarController;
+import model.ManagerMom;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -24,6 +25,8 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 public class MainView extends JFrame {
+	public ManagerMom managerMom;
+	
 	public JPanel contentPane;
 	public JPanel mom;
 	public JPanel kid;
@@ -31,17 +34,17 @@ public class MainView extends JFrame {
 	public JPanel event;
 	public JTable tableMom;
 	public JTextField idTextMom;
-	public JTextField nameTextMom;
+	public JTextField firstTextMom;
 	public JTextField addressTextMom;
 	public JTextField emailTextMom;
 	public JTextField dOBTextMom;
 	public JTextField phoneNumTextMom;
 	public JTextField idSearchTextMom;
-	public JTextField nameSearchTextMom;
 	private JTextField weightTextMom;
 	private JTextField eddTextMom;
 	private JTextField healthTextMom;
 	private JTextField apptTextMom;
+	private JTextField lastTextMom;
 
 	/**
 	 * Create the frame.
@@ -53,6 +56,7 @@ public class MainView extends JFrame {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
 		this.setLocationRelativeTo(null);
+		managerMom = new ManagerMom();
 		
 		//contentPane
 		contentPane = new JPanel();
@@ -151,9 +155,9 @@ public class MainView extends JFrame {
 		lblNewLabel_1.setBounds(296, 450, 58, 35);
 		mom.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Name\r\n");
+		JLabel lblNewLabel_1_1 = new JLabel("First Name\r\n");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_1.setBounds(421, 450, 47, 35);
+		lblNewLabel_1_1.setBounds(412, 450, 94, 35);
 		mom.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Address\r\n");
@@ -181,10 +185,10 @@ public class MainView extends JFrame {
 		mom.add(idTextMom);
 		idTextMom.setColumns(10);
 		
-		nameTextMom = new JTextField();
-		nameTextMom.setColumns(10);
-		nameTextMom.setBounds(478, 452, 145, 35);
-		mom.add(nameTextMom);
+		firstTextMom = new JTextField();
+		firstTextMom.setColumns(10);
+		firstTextMom.setBounds(512, 452, 113, 35);
+		mom.add(firstTextMom);
 		
 		addressTextMom = new JTextField();
 		addressTextMom.setColumns(10);
@@ -238,25 +242,15 @@ public class MainView extends JFrame {
 		lblNewLabel_11.setBounds(10, 507, 58, 35);
 		mom.add(lblNewLabel_11);
 		
-		JLabel lblNewLabel_1_11 = new JLabel("Name\r\n");
-		lblNewLabel_1_11.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_11.setBounds(10, 552, 47, 35);
-		mom.add(lblNewLabel_1_11);
-		
 		idSearchTextMom = new JTextField();
 		idSearchTextMom.setColumns(10);
 		idSearchTextMom.setBounds(75, 509, 121, 35);
 		mom.add(idSearchTextMom);
 		
-		nameSearchTextMom = new JTextField();
-		nameSearchTextMom.setColumns(10);
-		nameSearchTextMom.setBounds(75, 552, 121, 35);
-		mom.add(nameSearchTextMom);
-		
 		JButton btnSearchMom = new JButton("Search");
 		btnSearchMom.setForeground(new Color(0, 0, 128));
 		btnSearchMom.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSearchMom.setBounds(20, 598, 113, 35);
+		btnSearchMom.setBounds(20, 555, 113, 35);
 		mom.add(btnSearchMom);
 		
 		JLabel lblNewLabel_1_111 = new JLabel("Weight\r\n");
@@ -279,14 +273,24 @@ public class MainView extends JFrame {
 		lblNewLabel_1_1_3.setBounds(654, 496, 47, 35);
 		mom.add(lblNewLabel_1_1_3);
 		
+		JLabel lblNewLabel_1_11 = new JLabel("Last Name\r\n");
+		lblNewLabel_1_11.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_11.setBounds(652, 450, 94, 35);
+		mom.add(lblNewLabel_1_11);
+		
+		lastTextMom = new JTextField();
+		lastTextMom.setColumns(10);
+		lastTextMom.setBounds(745, 452, 156, 35);
+		mom.add(lastTextMom);
+		
 		weightTextMom = new JTextField();
 		weightTextMom.setColumns(10);
-		weightTextMom.setBounds(731, 544, 106, 35);
+		weightTextMom.setBounds(731, 544, 170, 35);
 		mom.add(weightTextMom);
 		
 		eddTextMom = new JTextField();
 		eddTextMom.setColumns(10);
-		eddTextMom.setBounds(731, 498, 106, 35);
+		eddTextMom.setBounds(731, 498, 170, 35);
 		mom.add(eddTextMom);
 		
 		healthTextMom = new JTextField();
@@ -330,13 +334,4 @@ public class MainView extends JFrame {
 		event.setBounds(280, 0, 1125, 730);
 		event.setVisible(false);
 	}
-	
-//	public static void main(String[] args) {
-//		try {
-//			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//			new MainView();
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//	}
 }

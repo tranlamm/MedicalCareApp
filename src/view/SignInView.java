@@ -1,9 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -85,7 +81,7 @@ public class SignInView extends JFrame {
 		contentPane.add(buttonLogin);
 		buttonLogin.addActionListener(signInListener);
 		
-		warning = new JLabel("\r\n");
+		warning = new JLabel("");
 		warning.setForeground(Color.RED);
 		warning.setFont(new Font("Tahoma", Font.BOLD, 13));
 		warning.setBounds(234, 228, 200, 29);

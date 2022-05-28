@@ -1,6 +1,8 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -34,21 +36,38 @@ public class AccountDAO implements DAOInterface<Account> {
 	}
 
 	@Override
-	public Account selectById(Account t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Account select(Account t) {
+		Account acc = null;
+		try {
+			Connection c = JDBCUtil.getConnection();
+			
+			String sql = "SELECT * FROM account WHERE "
+					+ "(taiKhoan = ?)"
+					+ " AND (matKhau = ?)";
+			
+			PreparedStatement pst = c.prepareStatement(sql);
+			pst.setString(1, t.getTaiKhoan());
+			pst.setString(2, t.getMatKhau());
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next())
+			{
+				String tk = rs.getString("taiKhoan");
+				String mk = rs.getString("matKhau");
+				acc = new Account(tk, mk);
+			}
+			
+			JDBCUtil.closeConnection(c);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return acc;
 	}
 
 	@Override
 	public ArrayList<Account> select() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public ArrayList<Account> select(String condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

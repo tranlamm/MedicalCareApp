@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class Kid extends Person{
 	private String parentName;
 	private String gender;
@@ -19,18 +17,17 @@ public class Kid extends Person{
 		this.gender = gender;
 	}
 
-
 	public Kid() {
 		super();
 		this.gender = null;
 	}
-	public Kid(String id, String lastName, String firstName, Date dateOfBirth, String address, String email, String phoneNum, String parentName,
+	public Kid(String id, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum, String parentName,
 			HistoryMedical[] histories, String gender, WeightHeight[] kidWH) {
 		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum, histories, kidWH);
 		this.gender = gender;		
 		this.parentName = parentName;
 	}
-	public Kid(String id, String lastName, String firstName, Date dateOfBirth, String address, String email, String phoneNum,
+	public Kid(String id, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
 			String gender, String parentName) {
 		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum);
 		this.gender = gender;

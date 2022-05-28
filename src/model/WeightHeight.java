@@ -3,9 +3,9 @@ package model;
 import java.util.Date;
 
 public class WeightHeight {
-	private int height; 
-	private int weight;
-	private Date date;
+	public int height; 
+	public int weight;
+	public Date date;
 	
 	public int getHeight() {
 		return height;
@@ -36,4 +36,10 @@ public class WeightHeight {
 		this.weight = 0;
 		this.date = null;
 	}
+	@Override
+	public String toString() {
+		return "WeightHeight [height=" + height + ", weight=" + weight + ", date=" + date + "]";
+	}
+	
+	
 }

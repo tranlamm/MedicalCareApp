@@ -2,7 +2,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import dao.AccountDAO;
+import model.Account;
 import view.MainView;
 import view.SignInView;
 
@@ -21,22 +24,25 @@ public class SignInController implements ActionListener {
 		{
 			String taiKhoan = this.signInView.getTaiKhoan();
 			String matKhau = this.signInView.getMatKhau();
+			int flag = 0;
 			
 			if (taiKhoan.equals("") || matKhau.equals(""))
 			{
 				this.signInView.setText("Vui lòng nhập tài khoản");
 			}
-			else if (taiKhoan.equals("admin") && matKhau.equals("admin"))
+			else
 			{
-				this.signInView.dispose();
-				new MainView();
+				Account x = AccountDAO.getInstance().select(new Account(taiKhoan, matKhau));
+				if (x == null)
+				{
+					this.signInView.setText("Sai tài khoản hoặc mật khẩu");
+				}
+				else
+				{
+					this.signInView.dispose();
+					new MainView();
+				}
 			}
-			else 
-			{
-				this.signInView.setText("Sai tài khoản hoặc mật khẩu");
-			}
-	
 		}
 	}
-	
 }

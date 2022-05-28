@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class HistoryMedical {
 	
-	private Date dateOfInjection; // ngày chích
-	private String typeOfVaccine; // loại
-	private int IDVaccine; // số lô "int"
-	private String address; // địa điểm
-	private String interaction; // phản ứng
-	private String imageHist; // ảnh
-	private Date nextAppointment; // hẹn lần tiếp
+	public Date dateOfInjection; // ngày chích
+	public String typeOfVaccine; // loại
+	public int IDVaccine; // số lô "int"
+	public String address; // địa điểm
+	public String interaction; // phản ứng
+	public String imageHist; // ảnh
+	public Date nextAppointment; // hẹn lần tiếp
 	
 	
 	public Date getDateOfInjection() {
@@ -65,5 +65,12 @@ public class HistoryMedical {
 		this.imageHist = imageHist;
 		this.nextAppointment = nextAppointment;
 	}
+	@Override
+	public String toString() {
+		return "HistoryMedical [dateOfInjection=" + dateOfInjection + ", typeOfVaccine=" + typeOfVaccine
+				+ ", IDVaccine=" + IDVaccine + ", address=" + address + ", interaction=" + interaction + ", imageHist="
+				+ imageHist + ", nextAppointment=" + nextAppointment + "]";
+	}
+	
 	
 }
