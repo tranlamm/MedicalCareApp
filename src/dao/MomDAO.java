@@ -119,8 +119,8 @@ public class MomDAO implements DAOInterface<Mom> {
 			
 			while (rs.next())
 			{
-				m = new Mom(rs.getString("id"), rs.getString("lastName"),
-						rs.getString("firstName"), rs.getString("dateOfBirth"), rs.getString("address"), 
+				m = new Mom(rs.getString("id"), rs.getString("firstName"),
+						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"), 
 						rs.getString("email"), rs.getString("phoneNum"), rs.getFloat("weight"),
 						rs.getString("appointment"), rs.getString("healthStatus"), rs.getString("EDD"));
 			}
@@ -146,8 +146,8 @@ public class MomDAO implements DAOInterface<Mom> {
 			
 			while (rs.next())
 			{
-				m.add(new Mom(rs.getString("id"), rs.getString("lastName"),
-						rs.getString("firstName"), rs.getString("dateOfBirth"), rs.getString("address"), 
+				m.add(new Mom(rs.getString("id"), rs.getString("firstName"),
+						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"), 
 						rs.getString("email"), rs.getString("phoneNum"), rs.getFloat("weight"),
 						rs.getString("appointment"), rs.getString("healthStatus"), rs.getString("EDD")));
 			}

@@ -22,16 +22,16 @@ public class Kid extends Person{
 		super();
 		this.gender = null;
 	}
-	public Kid(String id, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum, String parentName,
+	public Kid(String id, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum, String parentName,
 			HistoryMedical[] histories, String gender, WeightHeight[] kidWH) {
-		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum, kidWH);
+		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum, kidWH);
 		this.gender = gender;		
 		this.parentName = parentName;
 		this.histories = histories;
 	}
-	public Kid(String id, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
+	public Kid(String id, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum,
 			String gender, String parentName) {
-		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum);
+		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum);
 		this.gender = gender;
 		this.parentName = parentName;
 		this.histories = null;

@@ -10,13 +10,14 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.MomController;
 import controller.NavBarController;
 import model.ManagerMom;
 
 import java.awt.Color;
+
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,8 @@ public class MainView extends JFrame {
 	public JPanel kid;
 	public JPanel clinic;
 	public JPanel event;
+	
+	// for mom panel
 	public JTable tableMom;
 	public JTextField idTextMom;
 	public JTextField firstTextMom;
@@ -40,17 +43,18 @@ public class MainView extends JFrame {
 	public JTextField dOBTextMom;
 	public JTextField phoneNumTextMom;
 	public JTextField idSearchTextMom;
-	private JTextField weightTextMom;
-	private JTextField eddTextMom;
-	private JTextField healthTextMom;
-	private JTextField apptTextMom;
-	private JTextField lastTextMom;
+	public JTextField weightTextMom;
+	public JTextField eddTextMom;
+	public JTextField healthTextMom;
+	public JTextField apptTextMom;
+	public JTextField lastTextMom;
+	public JLabel labelWarnMom;
 
 	/**
 	 * Create the frame.
 	 */
 	public MainView() {
-		//init
+		//initialize
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Medical_Care");
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -58,13 +62,13 @@ public class MainView extends JFrame {
 		this.setLocationRelativeTo(null);
 		managerMom = new ManagerMom();
 		
-		//contentPane
+		//content pane
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		//navbar
+		//nav bar
 		ActionListener navBarListener = new NavBarController(this);
 		
 		JPanel navBar = new JPanel();
@@ -102,8 +106,9 @@ public class MainView extends JFrame {
 		background.setVerticalAlignment(SwingConstants.TOP);
 		background.setBounds(0, 0, 280, 734);
 		navBar.add(background);
-	
-		//mainPanel
+		//end nav bar
+		
+		//main panel
 		jPanelMom();
 		jPanelKid();
 		jPanelClinic();
@@ -113,7 +118,7 @@ public class MainView extends JFrame {
 		contentPane.add(kid);
 		contentPane.add(clinic);
 		contentPane.add(event);
-		//end mainPanel
+		//end main panel
 		
 		this.setVisible(true);
 	}
@@ -125,6 +130,8 @@ public class MainView extends JFrame {
 		mom.setBounds(280, 0, 1125, 730);
 		mom.setLayout(null);
 		
+		ActionListener momListener = new MomController(this);
+		
 		JLabel lblNewLabel = new JLabel("Th\u00F4ng tin thai ph\u1EE5");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -134,13 +141,9 @@ public class MainView extends JFrame {
 		tableMom = new JTable();
 		tableMom.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Name", "Date Of Birth", "Address", "Phone Number", "Email", "Weight", "Appointment"
-				, "Health Status", "EDD"
+				"ID", "First Name", "Last Name", "Date Of Birth", "Address", "Phone Number", "Email", "Weight", "Appointment", "Health Status", "EDD"
 			}
 		));
 		tableMom.setRowHeight(tableMom.getRowHeight() + 20);
@@ -181,31 +184,37 @@ public class MainView extends JFrame {
 		mom.add(lblNewLabel_1_3_2);
 		
 		idTextMom = new JTextField();
+		idTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		idTextMom.setBounds(327, 452, 72, 35);
 		mom.add(idTextMom);
 		idTextMom.setColumns(10);
 		
 		firstTextMom = new JTextField();
+		firstTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		firstTextMom.setColumns(10);
 		firstTextMom.setBounds(512, 452, 113, 35);
 		mom.add(firstTextMom);
 		
 		addressTextMom = new JTextField();
+		addressTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		addressTextMom.setColumns(10);
 		addressTextMom.setBounds(370, 544, 253, 35);
 		mom.add(addressTextMom);
 		
 		emailTextMom = new JTextField();
+		emailTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		emailTextMom.setColumns(10);
 		emailTextMom.setBounds(353, 588, 270, 35);
 		mom.add(emailTextMom);
 		
 		dOBTextMom = new JTextField();
+		dOBTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		dOBTextMom.setColumns(10);
 		dOBTextMom.setBounds(407, 496, 216, 35);
 		mom.add(dOBTextMom);
 		
 		phoneNumTextMom = new JTextField();
+		phoneNumTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		phoneNumTextMom.setColumns(10);
 		phoneNumTextMom.setBounds(425, 636, 198, 35);
 		mom.add(phoneNumTextMom);
@@ -213,21 +222,25 @@ public class MainView extends JFrame {
 		JButton btnInsertMom = new JButton("Insert");
 		btnInsertMom.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnInsertMom.setBounds(948, 461, 113, 35);
+		btnInsertMom.addActionListener(momListener);
 		mom.add(btnInsertMom);
 		
 		JButton btnDeleteMom = new JButton("Delete");
 		btnDeleteMom.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnDeleteMom.setBounds(948, 503, 113, 35);
+		btnDeleteMom.addActionListener(momListener);
 		mom.add(btnDeleteMom);
 		
 		JButton btnUpdateMom = new JButton("Update");
 		btnUpdateMom.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnUpdateMom.setBounds(948, 549, 113, 35);
+		btnUpdateMom.addActionListener(momListener);
 		mom.add(btnUpdateMom);
 		
 		JButton btnResetMom = new JButton("Reset");
 		btnResetMom.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnResetMom.setBounds(948, 595, 113, 35);
+		btnResetMom.addActionListener(momListener);
 		mom.add(btnResetMom);
 		
 		JLabel lblNewLabel_2 = new JLabel("Search\r\n");
@@ -243,6 +256,7 @@ public class MainView extends JFrame {
 		mom.add(lblNewLabel_11);
 		
 		idSearchTextMom = new JTextField();
+		idSearchTextMom.setFont(new Font("Tahoma", Font.BOLD, 15));
 		idSearchTextMom.setColumns(10);
 		idSearchTextMom.setBounds(75, 509, 121, 35);
 		mom.add(idSearchTextMom);
@@ -251,6 +265,7 @@ public class MainView extends JFrame {
 		btnSearchMom.setForeground(new Color(0, 0, 128));
 		btnSearchMom.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSearchMom.setBounds(20, 555, 113, 35);
+		btnSearchMom.addActionListener(momListener);
 		mom.add(btnSearchMom);
 		
 		JLabel lblNewLabel_1_111 = new JLabel("Weight\r\n");
@@ -279,29 +294,40 @@ public class MainView extends JFrame {
 		mom.add(lblNewLabel_1_11);
 		
 		lastTextMom = new JTextField();
+		lastTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lastTextMom.setColumns(10);
 		lastTextMom.setBounds(745, 452, 156, 35);
 		mom.add(lastTextMom);
 		
 		weightTextMom = new JTextField();
+		weightTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		weightTextMom.setColumns(10);
 		weightTextMom.setBounds(731, 544, 170, 35);
 		mom.add(weightTextMom);
 		
 		eddTextMom = new JTextField();
+		eddTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		eddTextMom.setColumns(10);
 		eddTextMom.setBounds(731, 498, 170, 35);
 		mom.add(eddTextMom);
 		
 		healthTextMom = new JTextField();
+		healthTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		healthTextMom.setColumns(10);
 		healthTextMom.setBounds(775, 590, 126, 35);
 		mom.add(healthTextMom);
 		
 		apptTextMom = new JTextField();
+		apptTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		apptTextMom.setColumns(10);
 		apptTextMom.setBounds(776, 636, 125, 35);
 		mom.add(apptTextMom);
+		
+		labelWarnMom = new JLabel("");
+		labelWarnMom.setForeground(Color.RED);
+		labelWarnMom.setFont(new Font("Tahoma", Font.BOLD, 14));
+		labelWarnMom.setBounds(930, 646, 150, 23);
+		mom.add(labelWarnMom);
 		
 		JLabel backgroundMom = new JLabel("");
 		backgroundMom.setVerticalAlignment(SwingConstants.TOP);

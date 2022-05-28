@@ -9,7 +9,7 @@ public class ManagerMom {
 	
 	public ManagerMom()
 	{
-		this.listMom = new ArrayList<Mom>();
+		this.listMom = MomDAO.getInstance().select();
 	}
 
 	public ArrayList<Mom> getListMom() {
@@ -39,13 +39,17 @@ public class ManagerMom {
 		this.listMom.add(m);
 	}
 	
-	public void load()
-	{
-		this.listMom = MomDAO.getInstance().select();
-	}
-	
 	public static Mom search(String id)
 	{
 		return MomDAO.getInstance().select(new Mom(id));
+	}
+	
+	public static boolean isExist(Mom m)
+	{	
+		Mom x = MomDAO.getInstance().select(m);
+		if (x == null)
+			return false;
+		else 
+			return true;
 	}
 }

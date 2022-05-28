@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import controller.SignInController;
@@ -21,7 +22,7 @@ public class SignInView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField taiKhoan;
-	private JTextField matKhau;
+	private JPasswordField matKhau;
 	private JLabel warning;
 	private JLabel background;
 
@@ -49,28 +50,28 @@ public class SignInView extends JFrame {
 		contentPane.add(taiKhoan);
 		taiKhoan.setColumns(10);
 		
-		matKhau = new JTextField();
+		matKhau = new JPasswordField();
 		matKhau.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		matKhau.setColumns(10);
 		matKhau.setBounds(238, 135, 170, 34);
 		contentPane.add(matKhau);
 		
-		JLabel labelTaiKhoan = new JLabel("T\u00E0i Kho\u1EA3n\r\n");
+		JLabel labelTaiKhoan = new JLabel("User Name");
 		labelTaiKhoan.setForeground(Color.DARK_GRAY);
 		labelTaiKhoan.setFont(new Font("Tahoma", Font.BOLD, 14));
 		labelTaiKhoan.setBounds(238, 35, 123, 34);
 		contentPane.add(labelTaiKhoan);
 		
-		JLabel labelMatKhau = new JLabel("M\u1EADt Kh\u1EA9u\r\n");
+		JLabel labelMatKhau = new JLabel("Password");
 		labelMatKhau.setForeground(Color.DARK_GRAY);
 		labelMatKhau.setFont(new Font("Tahoma", Font.BOLD, 14));
 		labelMatKhau.setBounds(238, 110, 123, 23);
 		contentPane.add(labelMatKhau);
 		
-		JLabel lblNewLabel = new JLabel("\u0110\u0103ng Nh\u1EADp\r\n");
+		JLabel lblNewLabel = new JLabel("Sign In");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(280, 5, 137, 34);
+		lblNewLabel.setBounds(300, 5, 74, 34);
 		contentPane.add(lblNewLabel);
 		
 		JButton buttonLogin = new JButton("LOGIN");

@@ -64,7 +64,7 @@ public class  Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Person(String iD, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
+	public Person(String iD, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum,
 			 WeightHeight [] wH) {
 		ID = iD;
 		this.lastName = lastName;
@@ -98,7 +98,7 @@ public class  Person {
 		this.wH = null;
 	}
 	
-	public Person(String iD, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum) {
+	public Person(String iD, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum) {
 		this.ID = iD;
 		this.lastName = lastName;
 		this.firstName = firstName;

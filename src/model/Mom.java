@@ -17,20 +17,20 @@ public class Mom extends Person{
 		super(ID);
 	}
 
-	public Mom(String iD, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
+	public Mom(String iD, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum,
 			WeightHeight[] fetalWH ) {
-		super(iD, lastName, firstName, dateOfBirth, address, email, phoneNum, fetalWH);
+		super(iD, firstName, lastName, dateOfBirth, address, email, phoneNum, fetalWH);
 
 	}
 
-	public Mom(String id, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum) {
-		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum);
+	public Mom(String id, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum) {
+		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum);
 	}
 	
-	public Mom(String id, String lastName, String firstName, String dateOfBirth, 
+	public Mom(String id, String firstName, String lastName, String dateOfBirth, 
 			String address, String email, String phoneNum, float weight, String appointment,
 			String healthStatus, String EDD) {
-		super(id, lastName, firstName, dateOfBirth, address, email, phoneNum);
+		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum);
 		this.weight = weight;
 		this.appointment = appointment;
 		this.healthStatus = healthStatus;
