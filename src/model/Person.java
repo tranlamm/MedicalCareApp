@@ -11,7 +11,6 @@ public class  Person {
 	protected String address;
 	protected String phoneNum;
 	protected String email;
-	protected HistoryMedical [] histories;
 	protected WeightHeight [] wH;
 	
 	
@@ -21,18 +20,14 @@ public class  Person {
 	public void setwH(WeightHeight[] wH) {
 		this.wH = wH;
 	}
-	public HistoryMedical[] getHistories() {
-		return histories;
-	}
+
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	public void setHistories(HistoryMedical[] histories) {
-		this.histories = histories;
-	}
+
 	public String getID() {
 		return ID;
 	}
@@ -70,7 +65,7 @@ public class  Person {
 		this.email = email;
 	}
 	public Person(String iD, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
-			HistoryMedical[] histories, WeightHeight [] wH) {
+			 WeightHeight [] wH) {
 		ID = iD;
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -78,7 +73,6 @@ public class  Person {
 		this.address = address;
 		this.email = email;
 		this.phoneNum = phoneNum;
-		this.histories = histories;
 		this.wH = wH;
 	}
 	
@@ -89,7 +83,6 @@ public class  Person {
 		this.dateOfBirth = null;
 		this.address = null;
 		this.email = null;
-		this.histories = null;
 		this.phoneNum = null;
 		this.wH = null;
 	}
@@ -101,7 +94,6 @@ public class  Person {
 		this.dateOfBirth = null;
 		this.address = null;
 		this.email = null;
-		this.histories = null;
 		this.phoneNum = null;
 		this.wH = null;
 	}
@@ -113,7 +105,6 @@ public class  Person {
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 		this.email = email;
-		this.histories = null;
 		this.phoneNum = phoneNum;
 		this.wH = null;
 	}
@@ -135,8 +126,8 @@ public class  Person {
 	@Override
 	public String toString() {
 		return "Person [ID=" + ID + ", lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth="
-				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email + ", histories="
-				+ Arrays.toString(histories) + ", wH=" + Arrays.toString(wH) + "]";
+				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email
+				+  ", wH=" + Arrays.toString(wH) + "]";
 	}
 	
 }

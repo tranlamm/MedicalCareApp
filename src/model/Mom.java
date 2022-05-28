@@ -18,8 +18,8 @@ public class Mom extends Person{
 	}
 
 	public Mom(String iD, String lastName, String firstName, String dateOfBirth, String address, String email, String phoneNum,
-			HistoryMedical[] histories, WeightHeight[] fetalWH ) {
-		super(iD, lastName, firstName, dateOfBirth, address, email, phoneNum,  histories, fetalWH);
+			WeightHeight[] fetalWH ) {
+		super(iD, lastName, firstName, dateOfBirth, address, email, phoneNum, fetalWH);
 
 	}
 
@@ -73,8 +73,8 @@ public class Mom extends Person{
 	public String toString() {
 		return "Mom [weight=" + weight + ", appointment=" + appointment + ", healthStatus=" + healthStatus + ", EDD="
 				+ EDD + ", ID=" + ID + ", lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth="
-				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email + ", histories="
-				+ Arrays.toString(histories) + ", wH=" + Arrays.toString(wH) + "]";
+				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email + 
+				", wH=" + Arrays.toString(wH) + "]";
 	}
 
 	@Override
