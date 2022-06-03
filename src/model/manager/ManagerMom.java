@@ -1,8 +1,9 @@
-package model;
+package model.manager;
 
 import java.util.ArrayList;
 
 import dao.MomDAO;
+import model.core.Mom;
 
 public class ManagerMom {
 	public ArrayList<Mom> listMom;

@@ -2,10 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import dao.AccountDAO;
-import model.Account;
+import model.core.Account;
 import view.MainView;
 import view.SignInView;
 
@@ -24,7 +23,6 @@ public class SignInController implements ActionListener {
 		{
 			String taiKhoan = this.signInView.getTaiKhoan();
 			String matKhau = this.signInView.getMatKhau();
-			int flag = 0;
 			
 			if (taiKhoan.equals("") || matKhau.equals(""))
 			{
@@ -40,7 +38,15 @@ public class SignInController implements ActionListener {
 				else
 				{
 					this.signInView.dispose();
-					new MainView();
+					String tmp = x.getType();
+					if (tmp.equals("admin"))
+					{
+						new MainView();						
+					}
+					else if (tmp.equals("user"))
+					{
+						
+					}
 				}
 			}
 		}

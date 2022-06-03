@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.MomController;
 import controller.NavBarController;
-import model.ManagerMom;
+import model.manager.ManagerMom;
 
 import java.awt.Color;
 

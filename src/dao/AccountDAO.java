@@ -4,11 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import database.JDBCUtil;
-import model.Account;
+import model.core.Account;
 
 public class AccountDAO implements DAOInterface<Account> {
 
@@ -55,7 +54,8 @@ public class AccountDAO implements DAOInterface<Account> {
 			{
 				String tk = rs.getString("taiKhoan");
 				String mk = rs.getString("matKhau");
-				acc = new Account(tk, mk);
+				String type = rs.getString("type");
+				acc = new Account(tk, mk, type);
 			}
 			
 			JDBCUtil.closeConnection(c);

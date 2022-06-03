@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import database.JDBCUtil;
-import model.Mom;
+import model.core.Mom;
 
 public class MomDAO implements DAOInterface<Mom> {
 	

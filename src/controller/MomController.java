@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import dao.MomDAO;
-import model.ManagerMom;
-import model.Mom;
+import model.core.Mom;
+import model.manager.ManagerMom;
 import view.MainView;
 
-public class MomController implements ActionListener{
+public class MomController implements ActionListener, ControllerInterface{
 	private MainView mainView;
 	
 	public MomController(MainView mainView) {
