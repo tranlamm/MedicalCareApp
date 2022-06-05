@@ -6,12 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.EventController;
 import controller.MomController;
 import controller.NavBarController;
+import model.manager.ManagerClinic;
+import model.manager.ManagerEvent;
+import model.manager.ManagerKid;
 import model.manager.ManagerMom;
 
 import java.awt.Color;
@@ -24,9 +27,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
 
 public class MainView extends JFrame {
 	public ManagerMom managerMom;
+	public ManagerEvent managerEvent;
+	public ManagerClinic managerClinic;
+	public ManagerKid managerKid;
 	
 	public JPanel contentPane;
 	public JPanel mom;
@@ -50,6 +57,13 @@ public class MainView extends JFrame {
 	public JTextField lastTextMom;
 	public JLabel labelWarnMom;
 
+	// for event panel
+	public JTable tableEvent;
+	public JTextField dateEvent;
+	public JTextField nameEvent;
+	public JTextField searchTextEvent;
+	public JTextArea desEvent;
+
 	/**
 	 * Create the frame.
 	 */
@@ -61,6 +75,9 @@ public class MainView extends JFrame {
 		this.setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
 		this.setLocationRelativeTo(null);
 		managerMom = new ManagerMom();
+		managerEvent = new ManagerEvent();
+		managerKid = new ManagerKid();
+		managerClinic = new ManagerClinic();
 		
 		//content pane
 		contentPane = new JPanel();
@@ -109,14 +126,14 @@ public class MainView extends JFrame {
 		//end nav bar
 		
 		//main panel
-		jPanelMom();
-		jPanelKid();
-		jPanelClinic();
+//		jPanelMom();
+//		jPanelKid();
+//		jPanelClinic();
 		jPanelEvent();
 		
-		contentPane.add(mom);
-		contentPane.add(kid);
-		contentPane.add(clinic);
+//		contentPane.add(mom);
+//		contentPane.add(kid);
+//		contentPane.add(clinic);
 		contentPane.add(event);
 		//end main panel
 		
@@ -356,8 +373,96 @@ public class MainView extends JFrame {
 	public void jPanelEvent()
 	{
 		event = new JPanel();
-		event.setBackground(Color.CYAN);
+		event.setBackground(Color.WHITE);
 		event.setBounds(280, 0, 1125, 730);
+		event.setLayout(null);
+		
+		ActionListener eventListener = new EventController(this);
+		
+		tableEvent = new JTable();
+		tableEvent.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Name", "Date", "Description"
+			}
+		));
+		tableEvent.setRowHeight(tableEvent.getRowHeight() + 30);
+		
+		JScrollPane scrollPaneEvent = new JScrollPane(tableEvent);
+		scrollPaneEvent.setBounds(39,100,505,585);
+		event.add(scrollPaneEvent);
+		
+		dateEvent = new JTextField();
+		dateEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		dateEvent.setBounds(628, 150, 236, 31);
+		event.add(dateEvent);
+		dateEvent.setColumns(10);
+		
+		nameEvent = new JTextField();
+		nameEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		nameEvent.setColumns(10);
+		nameEvent.setBounds(628, 100, 236, 31);
+		event.add(nameEvent);
+		
+		desEvent = new JTextArea();
+		desEvent.setBackground(Color.WHITE);
+		desEvent.setFont(new Font("Arial", Font.PLAIN, 14));
+	
+		JScrollPane jScrollArea = new JScrollPane(desEvent); 
+		jScrollArea.setBounds(570, 230, 294, 140);
+		event.add(jScrollArea);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Name\r\n");
+		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1.setBounds(570, 100, 48, 23);
+		event.add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_3_1_1 = new JLabel("Date\r\n");
+		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1.setBounds(570, 150, 38, 23);
+		event.add(lblNewLabel_3_1_1);
+		
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("Description\r\n");
+		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1.setBounds(670, 200, 87, 23);
+		event.add(lblNewLabel_3_1_1_1);
+		
+		JButton insertEvent = new JButton("Insert");
+		insertEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
+		insertEvent.setBounds(912, 100, 100, 27);
+		insertEvent.addActionListener(eventListener);
+		event.add(insertEvent);
+		
+		JButton deleteEvent = new JButton("Delete");
+		deleteEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
+		deleteEvent.setBounds(912, 150, 100, 27);
+		deleteEvent.addActionListener(eventListener);
+		event.add(deleteEvent);
+		
+		JButton resetEvent = new JButton("Reset");
+		resetEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
+		resetEvent.setBounds(912, 200, 100, 27);
+		resetEvent.addActionListener(eventListener);
+		event.add(resetEvent);
+		
+		JLabel lblNewLabel_3_1_2 = new JLabel("Name\r\n");
+		lblNewLabel_3_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_2.setBounds(942, 275, 48, 23);
+		event.add(lblNewLabel_3_1_2);
+		
+		searchTextEvent = new JTextField();
+		searchTextEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		searchTextEvent.setColumns(10);
+		searchTextEvent.setBounds(874, 300, 178, 31);
+		event.add(searchTextEvent);
+		
+		JButton searchEvent = new JButton("Search");
+		searchEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
+		searchEvent.setBounds(912, 340, 100, 27);
+		searchEvent.addActionListener(eventListener);
+		event.add(searchEvent);
+		
 		event.setVisible(false);
 	}
 }
