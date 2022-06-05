@@ -4,7 +4,15 @@ public class Account {
 	private String taiKhoan;
 	private String matKhau;
 	private String type;
+	private String id;
 	
+	public Account(String taiKhoan, String matKhau, String type, String id) {
+		this.taiKhoan = taiKhoan;
+		this.matKhau = matKhau;
+		this.type = type;
+		this.id = id;
+	}
+
 	public Account(String taiKhoan, String matKhau, String type) {
 		this.taiKhoan = taiKhoan;
 		this.matKhau = matKhau;
@@ -41,6 +49,14 @@ public class Account {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }

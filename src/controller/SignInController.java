@@ -7,6 +7,7 @@ import dao.AccountDAO;
 import model.core.Account;
 import view.MainView;
 import view.SignInView;
+import view.UserView;
 
 public class SignInController implements ActionListener {
 	private SignInView signInView;
@@ -45,7 +46,7 @@ public class SignInController implements ActionListener {
 					}
 					else if (tmp.equals("user"))
 					{
-						
+						new UserView(x.getId());
 					}
 				}
 			}

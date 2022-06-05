@@ -55,7 +55,8 @@ public class AccountDAO implements DAOInterface<Account> {
 				String tk = rs.getString("taiKhoan");
 				String mk = rs.getString("matKhau");
 				String type = rs.getString("type");
-				acc = new Account(tk, mk, type);
+				String id = rs.getString("id");
+				acc = new Account(tk, mk, type, id);
 			}
 			
 			JDBCUtil.closeConnection(c);

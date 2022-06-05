@@ -70,7 +70,7 @@ public class MainView extends JFrame {
 	public MainView() {
 		//initialize
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Medical_Care");
+		this.setTitle("Medical Care");
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setBounds(100, 100, (int) dim.getWidth(), (int) dim.getHeight());
 		this.setLocationRelativeTo(null);
@@ -126,14 +126,14 @@ public class MainView extends JFrame {
 		//end nav bar
 		
 		//main panel
-//		jPanelMom();
-//		jPanelKid();
-//		jPanelClinic();
+		jPanelMom();
+		jPanelKid();
+		jPanelClinic();
 		jPanelEvent();
 		
-//		contentPane.add(mom);
-//		contentPane.add(kid);
-//		contentPane.add(clinic);
+		contentPane.add(mom);
+		contentPane.add(kid);
+		contentPane.add(clinic);
 		contentPane.add(event);
 		//end main panel
 		
@@ -172,91 +172,91 @@ public class MainView extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("ID\r\n");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1.setBounds(296, 450, 58, 35);
+		lblNewLabel_1.setBounds(296, 467, 58, 35);
 		mom.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("First Name\r\n");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_1.setBounds(412, 450, 94, 35);
+		lblNewLabel_1_1.setBounds(412, 467, 94, 35);
 		mom.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Address\r\n");
 		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_2.setBounds(296, 542, 79, 35);
+		lblNewLabel_1_2.setBounds(296, 559, 79, 35);
 		mom.add(lblNewLabel_1_2);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("Date Of Birth\r\n");
 		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_3.setBounds(296, 496, 113, 35);
+		lblNewLabel_1_3.setBounds(296, 511, 113, 35);
 		mom.add(lblNewLabel_1_3);
 		
 		JLabel lblNewLabel_1_3_1 = new JLabel("Phone Number\r\n");
 		lblNewLabel_1_3_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_3_1.setBounds(296, 634, 134, 35);
+		lblNewLabel_1_3_1.setBounds(296, 649, 134, 35);
 		mom.add(lblNewLabel_1_3_1);
 		
 		JLabel lblNewLabel_1_3_2 = new JLabel("Email");
 		lblNewLabel_1_3_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_3_2.setBounds(296, 588, 72, 35);
+		lblNewLabel_1_3_2.setBounds(296, 603, 72, 35);
 		mom.add(lblNewLabel_1_3_2);
 		
 		idTextMom = new JTextField();
 		idTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		idTextMom.setBounds(327, 452, 72, 35);
+		idTextMom.setBounds(327, 467, 72, 35);
 		mom.add(idTextMom);
 		idTextMom.setColumns(10);
 		
 		firstTextMom = new JTextField();
 		firstTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		firstTextMom.setColumns(10);
-		firstTextMom.setBounds(512, 452, 113, 35);
+		firstTextMom.setBounds(512, 467, 113, 35);
 		mom.add(firstTextMom);
 		
 		addressTextMom = new JTextField();
 		addressTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		addressTextMom.setColumns(10);
-		addressTextMom.setBounds(370, 544, 253, 35);
+		addressTextMom.setBounds(370, 559, 253, 35);
 		mom.add(addressTextMom);
 		
 		emailTextMom = new JTextField();
 		emailTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		emailTextMom.setColumns(10);
-		emailTextMom.setBounds(353, 588, 270, 35);
+		emailTextMom.setBounds(353, 603, 270, 35);
 		mom.add(emailTextMom);
 		
 		dOBTextMom = new JTextField();
 		dOBTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		dOBTextMom.setColumns(10);
-		dOBTextMom.setBounds(407, 496, 216, 35);
+		dOBTextMom.setBounds(407, 511, 216, 35);
 		mom.add(dOBTextMom);
 		
 		phoneNumTextMom = new JTextField();
 		phoneNumTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		phoneNumTextMom.setColumns(10);
-		phoneNumTextMom.setBounds(425, 636, 198, 35);
+		phoneNumTextMom.setBounds(425, 651, 198, 35);
 		mom.add(phoneNumTextMom);
 		
 		JButton btnInsertMom = new JButton("Insert");
 		btnInsertMom.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnInsertMom.setBounds(948, 461, 113, 35);
+		btnInsertMom.setBounds(948, 467, 113, 35);
 		btnInsertMom.addActionListener(momListener);
 		mom.add(btnInsertMom);
 		
 		JButton btnDeleteMom = new JButton("Delete");
 		btnDeleteMom.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnDeleteMom.setBounds(948, 503, 113, 35);
+		btnDeleteMom.setBounds(948, 511, 113, 35);
 		btnDeleteMom.addActionListener(momListener);
 		mom.add(btnDeleteMom);
 		
 		JButton btnUpdateMom = new JButton("Update");
 		btnUpdateMom.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnUpdateMom.setBounds(948, 549, 113, 35);
+		btnUpdateMom.setBounds(948, 559, 113, 35);
 		btnUpdateMom.addActionListener(momListener);
 		mom.add(btnUpdateMom);
 		
 		JButton btnResetMom = new JButton("Reset");
 		btnResetMom.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnResetMom.setBounds(948, 595, 113, 35);
+		btnResetMom.setBounds(948, 603, 113, 35);
 		btnResetMom.addActionListener(momListener);
 		mom.add(btnResetMom);
 		
@@ -264,93 +264,88 @@ public class MainView extends JFrame {
 		lblNewLabel_2.setBackground(new Color(255, 255, 255));
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 24));
-		lblNewLabel_2.setBounds(33, 450, 100, 48);
+		lblNewLabel_2.setBounds(50, 500, 100, 48);
 		mom.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_11 = new JLabel("ID\r\n");
 		lblNewLabel_11.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_11.setBounds(10, 507, 58, 35);
+		lblNewLabel_11.setBounds(10, 560, 58, 35);
 		mom.add(lblNewLabel_11);
 		
 		idSearchTextMom = new JTextField();
 		idSearchTextMom.setFont(new Font("Tahoma", Font.BOLD, 15));
 		idSearchTextMom.setColumns(10);
-		idSearchTextMom.setBounds(75, 509, 121, 35);
+		idSearchTextMom.setBounds(75, 560, 121, 35);
 		mom.add(idSearchTextMom);
 		
 		JButton btnSearchMom = new JButton("Search");
 		btnSearchMom.setForeground(new Color(0, 0, 128));
 		btnSearchMom.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSearchMom.setBounds(20, 555, 113, 35);
+		btnSearchMom.setBounds(35, 610, 113, 35);
 		btnSearchMom.addActionListener(momListener);
 		mom.add(btnSearchMom);
 		
 		JLabel lblNewLabel_1_111 = new JLabel("Weight\r\n");
 		lblNewLabel_1_111.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_111.setBounds(654, 542, 72, 35);
+		lblNewLabel_1_111.setBounds(654, 559, 72, 35);
 		mom.add(lblNewLabel_1_111);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Appointment\r\n");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_1_1.setBounds(654, 634, 121, 35);
+		lblNewLabel_1_1_1.setBounds(654, 649, 121, 35);
 		mom.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("Health Status\r\n");
 		lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_1_2.setBounds(654, 588, 132, 35);
+		lblNewLabel_1_1_2.setBounds(654, 605, 132, 35);
 		mom.add(lblNewLabel_1_1_2);
 		
 		JLabel lblNewLabel_1_1_3 = new JLabel("EDD\r\n");
 		lblNewLabel_1_1_3.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_1_3.setBounds(654, 496, 47, 35);
+		lblNewLabel_1_1_3.setBounds(654, 511, 47, 35);
 		mom.add(lblNewLabel_1_1_3);
 		
 		JLabel lblNewLabel_1_11 = new JLabel("Last Name\r\n");
 		lblNewLabel_1_11.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_1_11.setBounds(652, 450, 94, 35);
+		lblNewLabel_1_11.setBounds(652, 467, 94, 35);
 		mom.add(lblNewLabel_1_11);
 		
 		lastTextMom = new JTextField();
 		lastTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lastTextMom.setColumns(10);
-		lastTextMom.setBounds(745, 452, 156, 35);
+		lastTextMom.setBounds(745, 467, 156, 35);
 		mom.add(lastTextMom);
 		
 		weightTextMom = new JTextField();
 		weightTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		weightTextMom.setColumns(10);
-		weightTextMom.setBounds(731, 544, 170, 35);
+		weightTextMom.setBounds(731, 559, 170, 35);
 		mom.add(weightTextMom);
 		
 		eddTextMom = new JTextField();
 		eddTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		eddTextMom.setColumns(10);
-		eddTextMom.setBounds(731, 498, 170, 35);
+		eddTextMom.setBounds(731, 511, 170, 35);
 		mom.add(eddTextMom);
 		
 		healthTextMom = new JTextField();
 		healthTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		healthTextMom.setColumns(10);
-		healthTextMom.setBounds(775, 590, 126, 35);
+		healthTextMom.setBounds(775, 605, 126, 35);
 		mom.add(healthTextMom);
 		
 		apptTextMom = new JTextField();
 		apptTextMom.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		apptTextMom.setColumns(10);
-		apptTextMom.setBounds(776, 636, 125, 35);
+		apptTextMom.setBounds(776, 649, 125, 35);
 		mom.add(apptTextMom);
 		
 		labelWarnMom = new JLabel("");
 		labelWarnMom.setForeground(Color.RED);
 		labelWarnMom.setFont(new Font("Tahoma", Font.BOLD, 14));
-		labelWarnMom.setBounds(930, 646, 150, 23);
+		labelWarnMom.setBounds(948, 649, 113, 35);
 		mom.add(labelWarnMom);
 		
-		JLabel backgroundMom = new JLabel("");
-		backgroundMom.setVerticalAlignment(SwingConstants.TOP);
-		backgroundMom.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\medical.jpg"));
-		backgroundMom.setBounds(0, 0, 1100, 730);
-		mom.add(backgroundMom);
 		mom.setVisible(true);
 	}
 	

@@ -159,4 +159,26 @@ public class MomDAO implements DAOInterface<Mom> {
 		}	
 		return m;
 	}
+	
+	public void updateAppointment(Mom t)
+	{
+		try {
+			Connection c = JDBCUtil.getConnection();
+			
+			String sql = "UPDATE mom "
+					+ "SET appointment = ?"
+					+ "WHERE id = ?";
+			
+			PreparedStatement pst = c.prepareStatement(sql);
+			pst.setString(1, t.getAppointment());
+			pst.setString(2, t.getID());
+			pst.executeUpdate();
+			
+			JDBCUtil.closeConnection(c);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return;
+	}
 }
