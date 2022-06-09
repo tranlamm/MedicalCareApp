@@ -55,7 +55,7 @@ public class MainView extends JFrame {
 	public JTextField nameEvent;
 	public JTextField searchTextEvent;
 	public JTextArea desEvent;
-
+	
 	/**
 	 * Create the frame.
 	 */
@@ -284,19 +284,19 @@ public class MainView extends JFrame {
 		tableEvent.setRowHeight(tableEvent.getRowHeight() + 30);
 		
 		JScrollPane scrollPaneEvent = new JScrollPane(tableEvent);
-		scrollPaneEvent.setBounds(39,100,505,585);
+		scrollPaneEvent.setBounds(50,60,500,611);
 		event.add(scrollPaneEvent);
 		
 		dateEvent = new JTextField();
 		dateEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		dateEvent.setBounds(628, 150, 236, 31);
+		dateEvent.setBounds(669, 110, 195, 31);
 		event.add(dateEvent);
 		dateEvent.setColumns(10);
 		
 		nameEvent = new JTextField();
 		nameEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		nameEvent.setColumns(10);
-		nameEvent.setBounds(628, 100, 236, 31);
+		nameEvent.setBounds(669, 60, 195, 31);
 		event.add(nameEvent);
 		
 		desEvent = new JTextArea();
@@ -304,59 +304,117 @@ public class MainView extends JFrame {
 		desEvent.setFont(new Font("Arial", Font.PLAIN, 14));
 	
 		JScrollPane jScrollArea = new JScrollPane(desEvent); 
-		jScrollArea.setBounds(570, 230, 294, 140);
+		jScrollArea.setBounds(611, 194, 253, 136);
 		event.add(jScrollArea);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Name\r\n");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(570, 100, 48, 23);
+		lblNewLabel_3_1.setBounds(611, 60, 48, 23);
 		event.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Date\r\n");
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(570, 150, 38, 23);
+		lblNewLabel_3_1_1.setBounds(611, 110, 38, 23);
 		event.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Description\r\n");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(670, 200, 87, 23);
+		lblNewLabel_3_1_1_1.setBounds(611, 160, 87, 23);
 		event.add(lblNewLabel_3_1_1_1);
 		
 		JButton insertEvent = new JButton("Insert");
 		insertEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
-		insertEvent.setBounds(912, 100, 100, 27);
+		insertEvent.setBounds(912, 60, 100, 27);
 		insertEvent.addActionListener(eventListener);
 		event.add(insertEvent);
 		
 		JButton deleteEvent = new JButton("Delete");
 		deleteEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
-		deleteEvent.setBounds(912, 150, 100, 27);
+		deleteEvent.setBounds(912, 110, 100, 27);
 		deleteEvent.addActionListener(eventListener);
 		event.add(deleteEvent);
 		
 		JButton resetEvent = new JButton("Reset");
 		resetEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
-		resetEvent.setBounds(912, 200, 100, 27);
+		resetEvent.setBounds(912, 160, 100, 27);
 		resetEvent.addActionListener(eventListener);
 		event.add(resetEvent);
 		
 		JLabel lblNewLabel_3_1_2 = new JLabel("Name\r\n");
 		lblNewLabel_3_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_2.setBounds(942, 275, 48, 23);
+		lblNewLabel_3_1_2.setBounds(912, 225, 48, 23);
 		event.add(lblNewLabel_3_1_2);
 		
 		searchTextEvent = new JTextField();
 		searchTextEvent.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		searchTextEvent.setColumns(10);
-		searchTextEvent.setBounds(874, 300, 178, 31);
+		searchTextEvent.setBounds(912, 250, 140, 31);
 		event.add(searchTextEvent);
 		
 		JButton searchEvent = new JButton("Search");
 		searchEvent.setFont(new Font("Tahoma", Font.BOLD, 14));
-		searchEvent.setBounds(912, 340, 100, 27);
+		searchEvent.setBounds(912, 303, 100, 27);
 		searchEvent.addActionListener(eventListener);
 		event.add(searchEvent);
 		
-		event.setVisible(false);
+		JLabel lblNewLabel_3_1_1_2 = new JLabel("Send Mail");
+		lblNewLabel_3_1_1_2.setForeground(Color.RED);
+		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_3_1_1_2.setBounds(611, 370, 87, 23);
+		event.add(lblNewLabel_3_1_1_2);
+		
+		JLabel lblNewLabel_3_1_1_1_1 = new JLabel("From");
+		lblNewLabel_3_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1_1.setBounds(611, 408, 48, 23);
+		event.add(lblNewLabel_3_1_1_1_1);
+		
+		JLabel lblNewLabel_3_1_1_1_2 = new JLabel("To");
+		lblNewLabel_3_1_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1_2.setBounds(611, 452, 38, 23);
+		event.add(lblNewLabel_3_1_1_1_2);
+		
+		JLabel lblNewLabel_3_1_1_1_3 = new JLabel("Subject");
+		lblNewLabel_3_1_1_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1_3.setBounds(611, 494, 59, 23);
+		event.add(lblNewLabel_3_1_1_1_3);
+		
+		JLabel lblNewLabel_3_1_1_1_4 = new JLabel("Content");
+		lblNewLabel_3_1_1_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1_4.setBounds(611, 547, 72, 23);
+		event.add(lblNewLabel_3_1_1_1_4);
+		
+		JTextField textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField.setColumns(10);
+		textField.setBounds(689, 404, 195, 31);
+		event.add(textField);
+		
+		JTextField textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_1.setColumns(10);
+		textField_1.setBounds(689, 448, 195, 31);
+		event.add(textField_1);
+		
+		JTextField textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_2.setColumns(10);
+		textField_2.setBounds(689, 490, 195, 31);
+		event.add(textField_2);
+		
+		JTextArea tmp = new JTextArea();
+		tmp.setBackground(Color.WHITE);
+		tmp.setFont(new Font("Arial", Font.PLAIN, 14));
+		JScrollPane jScrollArea2 = new JScrollPane(tmp); 
+		jScrollArea2.setBounds(611, 581, 273, 90);
+		event.add(jScrollArea2);
+		
+		JButton btnSend = new JButton("Send");
+		btnSend.setForeground(Color.BLUE);
+		btnSend.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnSend.setBounds(912, 611, 140, 60);
+		btnSend.addActionListener(eventListener);
+		event.add(btnSend);
+		
+		event.setVisible(true);
 	}
 }

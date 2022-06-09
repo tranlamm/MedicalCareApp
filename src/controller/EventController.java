@@ -75,7 +75,6 @@ public class EventController implements ActionListener, ControllerInterface{
 					x.getDescription()
 			});
 		}
-		
 	}
 
 	@Override
@@ -89,14 +88,16 @@ public class EventController implements ActionListener, ControllerInterface{
 			model_table.removeRow(i);
 		}
 		
-		Event tmp = this.mainView.managerEvent.search(name);
-		if (tmp == null)
-			return;
-		model_table.addRow(new Object[] {
-				tmp.getName(),
-				tmp.getDate(),
-				tmp.getDescription()
-		});
+		ArrayList<Event> list = this.mainView.managerEvent.search(name);
+		
+		for (Event x : list)
+		{
+			model_table.addRow(new Object[] {
+					x.getName(),
+					x.getDate(),
+					x.getDescription()
+			});
+		}
 	}
 
 	@Override
@@ -124,6 +125,10 @@ public class EventController implements ActionListener, ControllerInterface{
 			else if (src.equals("Search"))
 			{
 				search();
+			}
+			else if (src.equals("Send"))
+			{
+				JOptionPane.showMessageDialog(this.mainView, "Send mail successful");
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

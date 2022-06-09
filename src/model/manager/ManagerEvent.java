@@ -35,20 +35,21 @@ public class ManagerEvent {
 		EventDAO.getInstance().delete(e);
 	}
 	
-	public Event search(String name)
+	public ArrayList<Event> search(String name)
 	{
 		if (name.equals(""))
 			return null;
 		String lowerName = name.toLowerCase();
+		
+		ArrayList<Event> list = new ArrayList<Event>();
 		for (Event x : listEvent)
 		{
 			String lowerX = x.getName().toLowerCase();
 			if (lowerX.contains(lowerName))
 			{
-				return x;
+				list.add(x);
 			}
 		}
-		return null;	
+		return list;	
 	}
-
 }
