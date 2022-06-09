@@ -1,5 +1,7 @@
 package model.core;
 
+import java.util.ArrayList;
+
 public class Kid extends Person{
 	private String parentName;
 	private String gender;
@@ -35,7 +37,7 @@ public class Kid extends Person{
 	}
 	
 	public Kid(String id, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum, String parentName,
-			HistoryMedical[] histories, String gender, WeightHeight[] kidWH) {
+			HistoryMedical[] histories, String gender, ArrayList<WeightHeight> kidWH) {
 		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum, kidWH);
 		this.gender = gender;		
 		this.parentName = parentName;

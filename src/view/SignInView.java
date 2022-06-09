@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import java.awt.Color;
-import java.awt.Component;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -33,8 +32,8 @@ public class SignInView extends JFrame {
 	public SignInView() {
 		this.setTitle("Sign In");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
 		setBounds(100, 100, 450, 300);
+		this.setLocationRelativeTo(null);
 		
 		ActionListener signInListener = new SignInController(this);
 		

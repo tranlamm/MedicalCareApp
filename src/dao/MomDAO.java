@@ -23,8 +23,8 @@ public class MomDAO implements DAOInterface<Mom> {
 			Connection c = JDBCUtil.getConnection();
 			
 			String sql = "INSERT INTO mom (id, firstName, lastName, dateOfBirth, "
-					+ "address, phoneNum, email, weight, appointment, healthStatus, EDD) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "address, phoneNum, email) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement pst = c.prepareStatement(sql);
 			pst.setString(1, t.getID());
@@ -34,10 +34,6 @@ public class MomDAO implements DAOInterface<Mom> {
 			pst.setString(5, t.getAddress());
 			pst.setString(6, t.getPhoneNum());
 			pst.setString(7, t.getEmail());
-			pst.setString(8, Float.toString(t.getWeight()));
-			pst.setString(9, t.getAppointment());
-			pst.setString(10, t.getHealthStatus());
-			pst.setString(11, t.getEDD());
 			pst.executeUpdate();
 			
 			JDBCUtil.closeConnection(c);
@@ -56,8 +52,7 @@ public class MomDAO implements DAOInterface<Mom> {
 			
 			String sql = "UPDATE mom "
 					+ "SET id = ?, firstName = ?, lastName = ?, dateOfBirth = ?, "
-					+ "address = ?, phoneNum = ?, email = ?, weight = ?, appointment = ?"
-					+ ", healthStatus = ?, EDD = ? "
+					+ "address = ?, phoneNum = ?, email = ?"
 					+ "WHERE id = ?";
 			
 			PreparedStatement pst = c.prepareStatement(sql);
@@ -68,11 +63,31 @@ public class MomDAO implements DAOInterface<Mom> {
 			pst.setString(5, t.getAddress());
 			pst.setString(6, t.getPhoneNum());
 			pst.setString(7, t.getEmail());
-			pst.setString(8, Float.toString(t.getWeight()));
-			pst.setString(9, t.getAppointment());
-			pst.setString(10, t.getHealthStatus());
-			pst.setString(11, t.getEDD());
-			pst.setString(12, t.getID());
+			pst.setString(8, t.getID());
+			pst.executeUpdate();
+			
+			JDBCUtil.closeConnection(c);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return 0;
+	}
+	
+	public int updateDetail(Mom t) {
+		try {
+			Connection c = JDBCUtil.getConnection();
+			
+			String sql = "UPDATE mom "
+					+ "SET appointment = ?, healthStatus = ?, EDD = ? "
+					+ "WHERE id = ?";
+			
+			PreparedStatement pst = c.prepareStatement(sql);
+			pst.setString(1, t.getAppointment());
+			pst.setString(2, t.getHealthStatus());
+			pst.setString(3, t.getEDD());
+			pst.setString(4, t.getID());
 			pst.executeUpdate();
 			
 			JDBCUtil.closeConnection(c);
@@ -121,7 +136,7 @@ public class MomDAO implements DAOInterface<Mom> {
 			{
 				m = new Mom(rs.getString("id"), rs.getString("firstName"),
 						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"), 
-						rs.getString("email"), rs.getString("phoneNum"), rs.getFloat("weight"),
+						rs.getString("email"), rs.getString("phoneNum"), rs.getString("weightHistory"),
 						rs.getString("appointment"), rs.getString("healthStatus"), rs.getString("EDD"));
 			}
 			
@@ -148,7 +163,7 @@ public class MomDAO implements DAOInterface<Mom> {
 			{
 				m.add(new Mom(rs.getString("id"), rs.getString("firstName"),
 						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"), 
-						rs.getString("email"), rs.getString("phoneNum"), rs.getFloat("weight"),
+						rs.getString("email"), rs.getString("phoneNum"), rs.getString("weightHistory"),
 						rs.getString("appointment"), rs.getString("healthStatus"), rs.getString("EDD")));
 			}
 			
@@ -172,6 +187,28 @@ public class MomDAO implements DAOInterface<Mom> {
 			PreparedStatement pst = c.prepareStatement(sql);
 			pst.setString(1, t.getAppointment());
 			pst.setString(2, t.getID());
+			pst.executeUpdate();
+			
+			JDBCUtil.closeConnection(c);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return;
+	}
+	
+	public void updateWeight(String id, String x)
+	{
+		try {
+			Connection c = JDBCUtil.getConnection();
+			
+			String sql = "UPDATE mom "
+					+ "SET weightHistory = CONCAT(weightHistory, ?) "
+					+ "WHERE id = ?";
+			
+			PreparedStatement pst = c.prepareStatement(sql);
+			pst.setString(1, x);
+			pst.setString(2, id);
 			pst.executeUpdate();
 			
 			JDBCUtil.closeConnection(c);

@@ -1,10 +1,9 @@
 package model.core;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Mom extends Person{
-	private float weight;
 	private String appointment;
 	private String healthStatus;
 	private String EDD;
@@ -18,32 +17,33 @@ public class Mom extends Person{
 	}
 
 	public Mom(String iD, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum,
-			WeightHeight[] fetalWH ) {
-		super(iD, firstName, lastName, dateOfBirth, address, email, phoneNum, fetalWH);
-
+			String fetalWH, String appointment, String status, String edd) {
+		super(iD, firstName, lastName, dateOfBirth, address, email, phoneNum);
+		this.appointment = appointment;
+		this.healthStatus = status;
+		this.EDD = edd;
+		this.wH = new ArrayList<WeightHeight>();
+		
+		if (fetalWH == null) return;
+		String x = fetalWH.trim();
+		String tmp[] = x.split(" ");
+		for (int i = 0; i < tmp.length; ++i)
+		{
+			String a = tmp[i].substring(0, 5);
+			float b = Float.parseFloat(tmp[i].substring(6));
+			this.wH.add(new WeightHeight(b, a));
+		}
 	}
 
 	public Mom(String id, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum) {
 		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum);
 	}
 	
-	public Mom(String id, String firstName, String lastName, String dateOfBirth, 
-			String address, String email, String phoneNum, float weight, String appointment,
-			String healthStatus, String EDD) {
-		super(id, firstName, lastName, dateOfBirth, address, email, phoneNum);
-		this.weight = weight;
-		this.appointment = appointment;
-		this.healthStatus = healthStatus;
-		this.EDD = EDD;
+	public ArrayList<WeightHeight> getWeight()
+	{
+		return wH;
 	}
 	
-	public float getWeight() {
-		return weight;
-	}
-
-	public void setWeight(float weight) {
-		this.weight = weight;
-	}
 
 	public String getAppointment() {
 		return appointment;
@@ -65,24 +65,8 @@ public class Mom extends Person{
 		return EDD;
 	}
 
-	public void setEDD(String eDD) {
-		EDD = eDD;
-	}
-	
-	@Override
-	public String toString() {
-		return "Mom [weight=" + weight + ", appointment=" + appointment + ", healthStatus=" + healthStatus + ", EDD="
-				+ EDD + ", ID=" + ID + ", lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth="
-				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email + 
-				", wH=" + Arrays.toString(wH) + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(EDD, appointment, healthStatus, weight);
-		return result;
+	public void setEDD(String EDD) {
+		this.EDD = EDD;
 	}
 
 	@Override

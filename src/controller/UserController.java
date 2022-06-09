@@ -60,7 +60,7 @@ public class UserController implements ActionListener{
 		if (appoint.equals(""))
 			return;
 		DefaultTableModel model_table = (DefaultTableModel) this.userView.table.getModel();
-		model_table.setValueAt(appoint, 0, 7);
+		model_table.setValueAt(appoint, 0, 6);
 		
 		this.userView.mom.setAppointment(appoint);
 		MomDAO.getInstance().updateAppointment(this.userView.mom);

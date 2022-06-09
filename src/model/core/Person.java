@@ -1,6 +1,6 @@
 package model.core;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class  Person {
@@ -11,23 +11,18 @@ public class  Person {
 	protected String address;
 	protected String phoneNum;
 	protected String email;
-	protected WeightHeight [] wH;
+	protected ArrayList<WeightHeight> wH;
 	
 	
-	public WeightHeight[] getwH() {
+	public ArrayList<WeightHeight> getwH() {
 		return wH;
 	}
-	public void setwH(WeightHeight[] wH) {
-		this.wH = wH;
-	}
-
 	public String getPhoneNum() {
 		return phoneNum;
 	}
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-
 	public String getID() {
 		return ID;
 	}
@@ -65,7 +60,7 @@ public class  Person {
 		this.email = email;
 	}
 	public Person(String iD, String firstName, String lastName, String dateOfBirth, String address, String email, String phoneNum,
-			 WeightHeight [] wH) {
+			ArrayList<WeightHeight> wH) {
 		ID = iD;
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -122,12 +117,6 @@ public class  Person {
 			return false;
 		Person other = (Person) obj;
 		return Objects.equals(ID, other.ID);
-	}
-	@Override
-	public String toString() {
-		return "Person [ID=" + ID + ", lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth="
-				+ dateOfBirth + ", address=" + address + ", phoneNum=" + phoneNum + ", email=" + email
-				+  ", wH=" + Arrays.toString(wH) + "]";
 	}
 	
 }

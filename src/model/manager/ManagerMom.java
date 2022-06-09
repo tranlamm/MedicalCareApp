@@ -53,4 +53,21 @@ public class ManagerMom {
 		else 
 			return true;
 	}
+	
+	public ArrayList<Mom> searchByName(String name)
+	{
+		ArrayList<Mom> m = new ArrayList<Mom>();
+		
+		String tmp = name.toLowerCase();
+		for (Mom x:listMom)
+		{
+			String fullName = (x.getFirstName() + " " + x.getLastName()).toLowerCase();
+			if (tmp.equals(fullName))
+			{
+				m.add(x);
+			}
+		}
+		
+		return m;
+	}
 }

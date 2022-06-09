@@ -58,7 +58,7 @@ public class UserView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Name", "DOB", "Address", "Phone", "Mail", "Weight", "Appointment", "Status", "EDD"
+				"ID", "Name", "DOB", "Address", "Phone", "Mail", "Appointment", "Status", "EDD"
 			}
 		));
 		table.setRowHeight(table.getRowHeight() + 40);
@@ -70,7 +70,6 @@ public class UserView extends JFrame {
 				mom.getAddress(),
 				mom.getPhoneNum(),
 				mom.getEmail(),
-				mom.getWeight(),
 				mom.getAppointment(),
 				mom.getHealthStatus(),
 				mom.getEDD()

@@ -1,11 +1,9 @@
 package model.core;
 
-import java.util.Date;
-
 public class WeightHeight {
 	public int height; 
-	public int weight;
-	public Date date;
+	public float weight;
+	public String date;
 	
 	public int getHeight() {
 		return height;
@@ -13,20 +11,25 @@ public class WeightHeight {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	public int getWeight() {
+	public float getWeight() {
 		return weight;
 	}
-	public void setWeight(int weight) {
+	public void setWeight(float weight) {
 		this.weight = weight;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	public WeightHeight(int height, int weight, Date date) {
+	public WeightHeight(int height, float weight, String date) {
 		this.height = height;
+		this.weight = weight;
+		this.date = date;
+	}
+	
+	public WeightHeight(float weight, String date) {
 		this.weight = weight;
 		this.date = date;
 	}
