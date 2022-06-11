@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
@@ -386,19 +387,19 @@ public class MainView extends JFrame {
 		JTextField textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(10);
-		textField.setBounds(689, 404, 195, 31);
+		textField.setBounds(680, 404, 140, 31);
 		event.add(textField);
 		
 		JTextField textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_1.setColumns(10);
-		textField_1.setBounds(689, 448, 195, 31);
+		textField_1.setBounds(679, 448, 140, 31);
 		event.add(textField_1);
 		
 		JTextField textField_2 = new JTextField();
 		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_2.setColumns(10);
-		textField_2.setBounds(689, 490, 195, 31);
+		textField_2.setBounds(679, 490, 140, 31);
 		event.add(textField_2);
 		
 		JTextArea tmp = new JTextArea();
@@ -415,6 +416,17 @@ public class MainView extends JFrame {
 		btnSend.addActionListener(eventListener);
 		event.add(btnSend);
 		
-		event.setVisible(true);
+		JLabel lblNewLabel_3 = new JLabel("Password");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3.setBounds(835, 408, 72, 23);
+		event.add(lblNewLabel_3);
+		
+		JPasswordField textField_3 = new JPasswordField();
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textField_3.setColumns(10);
+		textField_3.setBounds(912, 404, 140, 31);
+		event.add(textField_3);
+		
+		event.setVisible(false);
 	}
 }
