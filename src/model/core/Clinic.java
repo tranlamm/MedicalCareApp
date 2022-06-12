@@ -1,5 +1,7 @@
 package model.core;
 
+import java.util.Objects;
+
 public class Clinic {
 	protected String ID;
 	protected String clinicName;
@@ -70,4 +72,25 @@ public class Clinic {
 		this.email = null;
 		this.type = null;
 	}
+	public Clinic(String iD) {
+		super();
+		ID = iD;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(ID);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Clinic other = (Clinic) obj;
+		return Objects.equals(ID, other.ID);
+	}
+	
+	
 }

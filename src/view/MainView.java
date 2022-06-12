@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import controller.ClinicController;
 import controller.EventController;
 import controller.MomController;
 import controller.NavBarController;
@@ -56,6 +56,16 @@ public class MainView extends JFrame {
 	public JTextField nameEvent;
 	public JTextField searchTextEvent;
 	public JTextArea desEvent;
+	
+	// for clinic panel
+	public JTable tableClinic;
+	public JTextField idClinic;
+	public JTextField nameClinic;
+	public JTextField emailClinic;
+	public JTextField phoneNumberClinic;
+	public JTextField address;
+	public JTextField type;
+	public JTextField searchClinic;
 	
 	/**
 	 * Create the frame.
@@ -121,13 +131,16 @@ public class MainView extends JFrame {
 		//main panel
 		jPanelMom();
 		jPanelKid();
-		jPanelClinic();
 		jPanelEvent();
+		jPanelClinic();
 		
+		contentPane.add(event);
 		contentPane.add(mom);
 		contentPane.add(kid);
 		contentPane.add(clinic);
-		contentPane.add(event);
+		
+		
+
 		//end main panel
 		
 		this.setVisible(true);
@@ -260,9 +273,131 @@ public class MainView extends JFrame {
 	public void jPanelClinic()
 	{
 		clinic = new JPanel();
-		clinic.setBackground(Color.YELLOW);
+		clinic.setBackground(Color.WHITE);
 		clinic.setBounds(280, 0, 1125, 730);
+		clinic.setLayout(null);
+		
+		ActionListener listener = new ClinicController(this);
+		
+		tableClinic = new JTable();
+		tableClinic.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "Name", "Email","Phone Number","Address","Type"
+			}
+		));
+		tableClinic.setRowHeight(tableClinic.getRowHeight() + 30);
+		
+		JScrollPane scrollPaneClinic = new JScrollPane(tableClinic);
+		scrollPaneClinic.setBounds(125,106,452,426);
+		clinic.add(scrollPaneClinic);
+		
+		JLabel lblNewLabel_1 = new JLabel("ID");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1.setBounds(718, 86, 81, 42);
+		clinic.add(lblNewLabel_1);
+		
+		idClinic = new JTextField();
+		idClinic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		idClinic.setBounds(809, 82, 166, 51);
+		clinic.add(idClinic);
+		idClinic.setColumns(10);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Name");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_1.setBounds(718, 168, 81, 42);
+		clinic.add(lblNewLabel_1_1);
+		
+		nameClinic = new JTextField();
+		nameClinic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		nameClinic.setColumns(10);
+		nameClinic.setBounds(809, 164, 166, 51);
+		clinic.add(nameClinic);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Email");
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_2.setBounds(663, 265, 81, 42);
+		clinic.add(lblNewLabel_1_2);
+		
+		emailClinic = new JTextField();
+		emailClinic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		emailClinic.setColumns(10);
+		emailClinic.setBounds(809, 261, 166, 51);
+		clinic.add(emailClinic);
+		
+		JLabel lblNewLabel_1_3 = new JLabel("Phone Number");
+		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_3.setBounds(660, 350, 139, 42);
+		clinic.add(lblNewLabel_1_3);
+		
+		phoneNumberClinic = new JTextField();
+		phoneNumberClinic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		phoneNumberClinic.setColumns(10);
+		phoneNumberClinic.setBounds(809, 346, 166, 51);
+		clinic.add(phoneNumberClinic);
+		
+		JLabel lblNewLabel_1_4 = new JLabel("Address");
+		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_4.setBounds(718, 431, 81, 42);
+		clinic.add(lblNewLabel_1_4);
+		
+		address = new JTextField();
+		address.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		address.setColumns(10);
+		address.setBounds(809, 427, 166, 51);
+		clinic.add(address);
+		
+		JLabel lblNewLabel_1_5 = new JLabel("Type");
+		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel_1_5.setBounds(699, 526, 81, 42);
+		clinic.add(lblNewLabel_1_5);
+		
+		type = new JTextField();
+		type.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		type.setColumns(10);
+		type.setBounds(790, 522, 166, 51);
+		clinic.add(type);
+		
+		JButton insertBtn = new JButton("Insert");
+		insertBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		insertBtn.setBounds(77, 625, 139, 51);
+		insertBtn.addActionListener(listener);
+		clinic.add(insertBtn);
+		
+		JButton updateBtn = new JButton("Update");
+		updateBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		updateBtn.setBounds(244, 625, 139, 51);
+		updateBtn.addActionListener(listener);
+		clinic.add(updateBtn);
+		
+		JButton deleteBtn = new JButton("Delete");
+		deleteBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		deleteBtn.setBounds(413, 625, 139, 51);
+		deleteBtn.addActionListener(listener);
+		clinic.add(deleteBtn);
+		
+		JButton resetBtn = new JButton("Reset");
+		resetBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		resetBtn.setBounds(582, 625, 139, 51);
+		resetBtn.addActionListener(listener);
+		clinic.add(resetBtn);
+		
+		searchClinic = new JTextField();
+		searchClinic.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		searchClinic.setColumns(10);
+		searchClinic.setBounds(458, 534, 166, 51);
+		clinic.add(searchClinic);
+		
+		JButton searchBtn = new JButton("Search");
+		searchBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
+		searchBtn.setBounds(309, 534, 139, 51);
+		searchBtn.addActionListener(listener);
+		clinic.add(searchBtn);
+		
 		clinic.setVisible(false);
+		
+		//begin
 	}
 	
 	public void jPanelEvent()
@@ -387,19 +522,19 @@ public class MainView extends JFrame {
 		JTextField textField = new JTextField();
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField.setColumns(10);
-		textField.setBounds(680, 404, 140, 31);
+		textField.setBounds(689, 404, 195, 31);
 		event.add(textField);
 		
 		JTextField textField_1 = new JTextField();
 		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_1.setColumns(10);
-		textField_1.setBounds(679, 448, 140, 31);
+		textField_1.setBounds(689, 448, 195, 31);
 		event.add(textField_1);
 		
 		JTextField textField_2 = new JTextField();
 		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		textField_2.setColumns(10);
-		textField_2.setBounds(679, 490, 140, 31);
+		textField_2.setBounds(689, 490, 195, 31);
 		event.add(textField_2);
 		
 		JTextArea tmp = new JTextArea();
@@ -416,17 +551,7 @@ public class MainView extends JFrame {
 		btnSend.addActionListener(eventListener);
 		event.add(btnSend);
 		
-		JLabel lblNewLabel_3 = new JLabel("Password");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(835, 408, 72, 23);
-		event.add(lblNewLabel_3);
-		
-		JPasswordField textField_3 = new JPasswordField();
-		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBounds(912, 404, 140, 31);
-		event.add(textField_3);
-		
 		event.setVisible(false);
 	}
+
 }
