@@ -3,15 +3,17 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 import dao.KidDAO;
 import model.core.Kid;
+import model.manager.ManagerKid;
 import view.MainView;
-import view.KidDetail;
+import view.KidHistoryMedical;
 import view.KidInput;
+import view.KidWeightHeight;
 
 public class KidController implements ActionListener, ControllerInterface{
 	private MainView mainView;
@@ -42,11 +44,29 @@ public class KidController implements ActionListener, ControllerInterface{
 				reset();
 			else if (src.equals("Search"))
 			{
-				search();
+				String choice = "";
+				Enumeration<AbstractButton> button = this.mainView.buttonGroupKid.getElements();
+				while (button.hasMoreElements()) 
+				{
+					AbstractButton x = button.nextElement();
+					if (x.isSelected())
+					{
+						choice = x.getText();
+						break;
+					}
+				}
+				if (choice.equals("ID"))
+					search();
+				else if (choice.equals("Name"))
+					searchName();
 			}
-			else if (src.equals("Details"))
+			else if (src.equals("Weight Height"))
 			{
-				detail();
+				weightHeight();
+			}
+			else if (src.equals("History Medical"))
+			{
+				historyMedical();
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -150,14 +170,49 @@ public class KidController implements ActionListener, ControllerInterface{
 		});
 	}
 	
+	public void searchName()
+	{
+		String name = this.mainView.KidSearchByName.getText().trim();
+		
+		DefaultTableModel model_table = (DefaultTableModel) mainView.tableKid.getModel();
+		int soDong = model_table.getRowCount();
+		for (int i = soDong - 1; i > -1; i--)
+		{
+			model_table.removeRow(i);
+		}
+		
+		ArrayList<Kid> k = this.mainView.managerKid.searchByName(name);
+		for (Kid tmp : k)
+		{
+			model_table.addRow(new Object[] {
+					tmp.getID(),
+					tmp.getFirstName(),
+					tmp.getLastName(),
+					tmp.getDateOfBirth(),
+					tmp.getGender(),
+					tmp.getAddress(),
+					tmp.getPhoneNum(),
+					tmp.getEmail(),
+					tmp.getParentName(),
+			});
+		}
+	}
 	
-	public void detail()
+	public void historyMedical()
 	{
 		DefaultTableModel model_table = (DefaultTableModel) this.mainView.tableKid.getModel();
 		int i_row = this.mainView.tableKid.getSelectedRow();
 		if (i_row < 0)
 			return;
-		Kid tmp = this.mainView.managerKid.search(model_table.getValueAt(i_row, 0) + "");
-		new KidDetail(tmp);
+		new KidHistoryMedical(ManagerKid.search(model_table.getValueAt(i_row, 0) + ""));
+	}
+	
+	public void weightHeight()
+	{
+		DefaultTableModel model_table = (DefaultTableModel) this.mainView.tableKid.getModel();
+		int i_row = this.mainView.tableKid.getSelectedRow();
+		if (i_row < 0)
+			return;
+		new KidWeightHeight(ManagerKid.search(model_table.getValueAt(i_row, 0) + ""));
 	}
 }

@@ -13,7 +13,6 @@ public class  Person {
 	protected String email;
 	protected ArrayList<WeightHeight> wH;
 	
-	
 	public ArrayList<WeightHeight> getwH() {
 		return wH;
 	}

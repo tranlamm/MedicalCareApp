@@ -10,8 +10,11 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 import controller.MomDetailController;
 import model.core.Mom;
@@ -24,19 +27,27 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.BasicStroke;
 import java.awt.Color;
 
 public class MomDetail extends JFrame {
 	public Mom mom;
 	
 	private JPanel contentPane;
-	public DefaultCategoryDataset dataset;
 	public JTextField appoint;
 	public JTextField status;
 	public JTextField edd;
 	public JTextField dateText;
 	public JTextField weightText;
 	public JTable table;
+	public XYSeriesCollection dataset;
+	public XYSeries series1;
+	public XYSeries series2;
+	
+	public boolean flag;
+	public int count;
+
 
 	public MomDetail(Mom mom) {
 		this.mom = mom;
@@ -89,7 +100,7 @@ public class MomDetail extends JFrame {
 		edd.setBounds(827, 562, 147, 33);
 		contentPane.add(edd);
 		
-		JLabel lblDate = new JLabel("Date");
+		JLabel lblDate = new JLabel("Month");
 		lblDate.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblDate.setBounds(707, 101, 52, 25);
 		contentPane.add(lblDate);
@@ -146,30 +157,63 @@ public class MomDetail extends JFrame {
 		this.setVisible(true);
 	}
 	
-    private DefaultCategoryDataset createDataset() {
-        dataset = new DefaultCategoryDataset();
+    private XYDataset createDataset() {
+        dataset = new XYSeriesCollection();
+        
+        series1 = new XYSeries("Weight");
+        series2 = new XYSeries("Expect");
         
         ArrayList<WeightHeight> list = mom.getWeight();
-        
+        count = 1;
         for (WeightHeight x:list)
         {
         	double tmp = x.getWeight();
-        	String date = x.getDate();
-        	dataset.addValue(tmp, "Weight", date);
+        	series1.add(count, tmp);
+        	count++;
+        }
+  
+        if (list.size() == 0) 
+        	flag = false;
+        else	
+        {
+        	flag = true;
+        	double w = list.get(0).getWeight();
+        	series2.add(1, w);
+			series2.add(2, w+2);
+			series2.add(3, w+4);
+			series2.add(4, w+6);
+			series2.add(5, w+9);
+			series2.add(6, w+12);
+			series2.add(7, w+16);
+			series2.add(8, w+21);
+			series2.add(9, w+26);
         }
         
+        dataset.addSeries(series1);
+        dataset.addSeries(series2);
         return dataset;
     }
 
-    public JFreeChart createLineChart() {
-    	JFreeChart lineChart = ChartFactory.createLineChart(
-                "",
-
-                "Date", "Weight", createDataset(),
-
-                PlotOrientation.VERTICAL, false, false, false);
-
-        return lineChart;
+    public void customize(JFreeChart chart)
+    {
+    	XYPlot plot = chart.getXYPlot();
+    	XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+    	
+    	renderer.setSeriesPaint(0, Color.GREEN);
+    	renderer.setSeriesPaint(1, Color.RED);
+    	
+    	renderer.setSeriesStroke(0, new BasicStroke(3.0f));
+    	renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+    	
+    	plot.setOutlinePaint(Color.BLUE);
+    	plot.setOutlineStroke(new BasicStroke(2.0f));
+    	
+    	plot.setRenderer(renderer);
     }
     
+    public JFreeChart createLineChart() {
+    	JFreeChart chart = ChartFactory.createXYLineChart("", "Month", "Weight", createDataset());
+    	customize(chart);
+    	return chart;
+    }
 }

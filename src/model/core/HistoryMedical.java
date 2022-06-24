@@ -1,22 +1,17 @@
 package model.core;
 
-import java.util.Date;
-
 public class HistoryMedical {
 	
-	public Date dateOfInjection; // ngày chích
+	public String dateOfInjection; // ngày chích
 	public String typeOfVaccine; // loại
-	public int IDVaccine; // số lô "int"
-	public String address; // địa điểm
+	public String IDVaccine; // số lô "int"
 	public String interaction; // phản ứng
-	public String imageHist; // ảnh
-	public Date nextAppointment; // hẹn lần tiếp
+	public String idKid;
 	
-	
-	public Date getDateOfInjection() {
+	public String getDateOfInjection() {
 		return dateOfInjection;
 	}
-	public void setDateOfInjection(Date dateOfInjection) {
+	public void setDateOfInjection(String dateOfInjection) {
 		this.dateOfInjection = dateOfInjection;
 	}
 	public String getTypeOfVaccine() {
@@ -25,52 +20,30 @@ public class HistoryMedical {
 	public void setTypeOfVaccine(String typeOfVaccine) {
 		this.typeOfVaccine = typeOfVaccine;
 	}
-	public int getIDVaccine() {
-		return IDVaccine;
-	}
-	public void setIDVaccine(int iDVaccine) {
-		IDVaccine = iDVaccine;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getInteraction() {
 		return interaction;
 	}
 	public void setInteraction(String interaction) {
 		this.interaction = interaction;
 	}
-	public String getImageHist() {
-		return imageHist;
+	public String getIDVaccine() {
+		return IDVaccine;
 	}
-	public void setImageHist(String imageHist) {
-		this.imageHist = imageHist;
+	public void setIDVaccine(String iDVaccine) {
+		IDVaccine = iDVaccine;
 	}
-	public Date getNextAppointment() {
-		return nextAppointment;
+	public String getIdKid() {
+		return idKid;
 	}
-	public void setNextAppointment(Date nextAppointment) {
-		this.nextAppointment = nextAppointment;
+	public void setIdKid(String idKid) {
+		this.idKid = idKid;
 	}
-	public HistoryMedical( Date dateOfInjection, String typeOfVaccine, int iDVaccine, String address,
-			String interaction, String imageHist, Date nextAppointment) {
+	public HistoryMedical(String dateOfInjection, String typeOfVaccine, String iDVaccine, String interaction,
+			String idKid) {
 		this.dateOfInjection = dateOfInjection;
 		this.typeOfVaccine = typeOfVaccine;
 		IDVaccine = iDVaccine;
-		this.address = address;
 		this.interaction = interaction;
-		this.imageHist = imageHist;
-		this.nextAppointment = nextAppointment;
+		this.idKid = idKid;
 	}
-	@Override
-	public String toString() {
-		return "HistoryMedical [dateOfInjection=" + dateOfInjection + ", typeOfVaccine=" + typeOfVaccine
-				+ ", IDVaccine=" + IDVaccine + ", address=" + address + ", interaction=" + interaction + ", imageHist="
-				+ imageHist + ", nextAppointment=" + nextAppointment + "]";
-	}
-	
-	
 }

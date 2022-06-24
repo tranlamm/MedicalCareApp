@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import database.JDBCUtil;
+import model.core.HistoryMedical;
 import model.core.Kid;
 
 public class KidDAO implements DAOInterface<Kid> {
@@ -26,7 +27,6 @@ public class KidDAO implements DAOInterface<Kid> {
 					+ "gender, address, phoneNum, email, parentName) "
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
-			
 			PreparedStatement pst = c.prepareStatement(sql);
 			pst.setString(1, t.getID());
 			pst.setString(2, t.getFirstName());
@@ -38,7 +38,6 @@ public class KidDAO implements DAOInterface<Kid> {
 			pst.setString(8, t.getEmail());
 			pst.setString(9, t.getParentName());
 			pst.executeUpdate();
-			
 			
 			JDBCUtil.closeConnection(c);
 		} catch (SQLException e) {
@@ -81,28 +80,6 @@ public class KidDAO implements DAOInterface<Kid> {
 		return 0;
 	}
 	
-	public int updateDetail(Kid t) {
-		try {
-			Connection c = JDBCUtil.getConnection();
-			
-			String sql = "UPDATE kid "
-					+ "SET appointment = ?, vacation = ?"
-					+ "WHERE id = ?";
-			
-			PreparedStatement pst = c.prepareStatement(sql);
-			pst.setString(1, t.getAppointment());
-			pst.setString(2, t.getVacation());
-			pst.setString(3, t.getID());
-			pst.executeUpdate();
-			
-			JDBCUtil.closeConnection(c);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
-		return 0;
-	}
 
 	@Override
 	public int delete(Kid t) {
@@ -137,12 +114,13 @@ public class KidDAO implements DAOInterface<Kid> {
 			pst.setString(1, t.getID());
 			ResultSet rs = pst.executeQuery();
 			
+			ArrayList<HistoryMedical> h = HistoryMedicalDAO.getInstance().select(t.getID());
 			while (rs.next())
 			{
 				k = new Kid(rs.getString("id"), rs.getString("firstName"),
-						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("gender"),
-						rs.getString("address"), rs.getString("email"), rs.getString("phoneNum"), rs.getString("parentName"),
-						rs.getString("weightHistory"), rs.getString("appointment"), rs.getString("vacation"));
+						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"),
+						rs.getString("email"), rs.getString("phoneNum"), rs.getString("weightHistory"), rs.getString("heightHistory"), rs.getString("gender"),
+						rs.getString("parentName"), h);
 			}
 			
 			JDBCUtil.closeConnection(c);
@@ -166,10 +144,12 @@ public class KidDAO implements DAOInterface<Kid> {
 			
 			while (rs.next())
 			{
-				k.add(new Kid(rs.getString("id"), rs.getString("firstName"),
-						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("gender"),
-						rs.getString("address"), rs.getString("email"), rs.getString("phoneNum"), rs.getString("parentName"),
-						rs.getString("weightHistory"), rs.getString("appointment"), rs.getString("vacation")));
+				String id = rs.getString("id");
+				ArrayList<HistoryMedical> h = HistoryMedicalDAO.getInstance().select(id);
+				k.add(new Kid(id, rs.getString("firstName"),
+						rs.getString("lastName"), rs.getString("dateOfBirth"), rs.getString("address"),
+						rs.getString("email"), rs.getString("phoneNum"), rs.getString("weightHistory"), rs.getString("heightHistory"), rs.getString("gender"),
+						rs.getString("parentName"), h));
 			}
 			
 			JDBCUtil.closeConnection(c);
@@ -180,18 +160,18 @@ public class KidDAO implements DAOInterface<Kid> {
 		return k;
 	}
 	
-	public void updateAppointment(Kid t)
+	public void updateWeight(String id, String x)
 	{
 		try {
 			Connection c = JDBCUtil.getConnection();
 			
 			String sql = "UPDATE kid "
-					+ "SET appointment = ?"
+					+ "SET weightHistory = CONCAT(weightHistory, ?) "
 					+ "WHERE id = ?";
 			
 			PreparedStatement pst = c.prepareStatement(sql);
-			pst.setString(1, t.getAppointment());
-			pst.setString(2, t.getID());
+			pst.setString(1, x);
+			pst.setString(2, id);
 			pst.executeUpdate();
 			
 			JDBCUtil.closeConnection(c);
@@ -202,13 +182,13 @@ public class KidDAO implements DAOInterface<Kid> {
 		return;
 	}
 	
-	public void updateWeight(String id, String x)
+	public void updateHeight(String id, String x)
 	{
 		try {
 			Connection c = JDBCUtil.getConnection();
 			
 			String sql = "UPDATE kid "
-					+ "SET weightHistory = CONCAT(weightHistory, ?) "
+					+ "SET heightHistory = CONCAT(heightHistory, ?) "
 					+ "WHERE id = ?";
 			
 			PreparedStatement pst = c.prepareStatement(sql);

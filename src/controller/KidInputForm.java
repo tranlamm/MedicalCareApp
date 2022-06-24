@@ -2,14 +2,11 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.table.DefaultTableModel;
-
 import model.core.Kid;
 import model.manager.ManagerKid;
 import view.MainView;
 import view.KidInput;
-
 
 public class KidInputForm implements ActionListener {
 	private KidInput kidInput;
@@ -40,7 +37,17 @@ public class KidInputForm implements ActionListener {
 		}
 		String firstNameKid = kidInput.firstTextKid.getText().trim();
 		String lastNameKid = kidInput.lastTextKid.getText().trim();
+		if (firstNameKid.equals("") || lastNameKid.equals(""))
+		{
+			kidInput.WarnKid.setText("Please Enter Name");
+			return null;
+		}
 		String dobKid = kidInput.dOBTextKid.getText().trim();
+		if (dobKid.equals(""))
+		{
+			kidInput.WarnKid.setText("Please Enter DOB");
+			return null;
+		}
 		String genderKid = kidInput.genderTextKid.getText().trim();
 		String addressKid = kidInput.addressTextKid.getText().trim();
 		String emailKid = kidInput.emailTextKid.getText().trim();
@@ -95,5 +102,4 @@ public class KidInputForm implements ActionListener {
 			});
 		}
 	}
-	
 }

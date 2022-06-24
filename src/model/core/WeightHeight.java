@@ -29,6 +29,14 @@ public class WeightHeight {
 		this.date = date;
 	}
 	
+	public WeightHeight(float weight) {
+		this.weight = weight;
+	}
+	
+	public WeightHeight(int height) {
+		this.height = height;
+	}
+	
 	public WeightHeight(float weight, String date) {
 		this.weight = weight;
 		this.date = date;
@@ -43,6 +51,4 @@ public class WeightHeight {
 	public String toString() {
 		return "WeightHeight [height=" + height + ", weight=" + weight + ", date=" + date + "]";
 	}
-	
-	
 }

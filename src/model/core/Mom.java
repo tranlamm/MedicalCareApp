@@ -24,14 +24,18 @@ public class Mom extends Person{
 		this.EDD = edd;
 		this.wH = new ArrayList<WeightHeight>();
 		
-		if (fetalWH == null) return;
+		if (fetalWH == null || fetalWH.trim().equals("")) return;
 		String x = fetalWH.trim();
 		String tmp[] = x.split(" ");
 		for (int i = 0; i < tmp.length; ++i)
 		{
-			String a = tmp[i].substring(0, 5);
-			float b = Float.parseFloat(tmp[i].substring(6));
-			this.wH.add(new WeightHeight(b, a));
+			try {
+				float w = Float.parseFloat(tmp[i]);
+				this.wH.add(new WeightHeight(w));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -127,7 +127,7 @@ public class MomInput extends JFrame {
 		warning = new JLabel("");
 		warning.setForeground(new Color(255, 0, 0));
 		warning.setFont(new Font("Tahoma", Font.BOLD, 14));
-		warning.setBounds(70, 408, 127, 26);
+		warning.setBounds(24, 408, 173, 26);
 		contentPane.add(warning);
 		
 		this.setVisible(true);

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Kid extends Person{
-	private  String gender;
-	private  String parentName;
-	private  String appointment;
-	private  String vacation;
+	private String gender;
+	private String parentName;
+	private ArrayList<HistoryMedical> historyMedicals;
+	private ArrayList<WeightHeight> weight;
+	private ArrayList<WeightHeight> height;
 	
 	public Kid() {
 		super();
@@ -17,23 +18,43 @@ public class Kid extends Person{
 		super(ID);
 	}
 
-	public Kid(String iD, String firstName, String lastName, String dateOfBirth, String gender, String address, String email, String phoneNum, String parentName,
-			String fetalWH, String appointment, String vacation) {
+	
+	public Kid(String iD, String firstName, String lastName, String dateOfBirth, String address, String email,
+			String phoneNum, String wH, String hH, String gender, String parentName,
+			ArrayList<HistoryMedical> historyMedicals) {
 		super(iD, firstName, lastName, dateOfBirth, address, email, phoneNum);
 		this.gender = gender;
 		this.parentName = parentName;
-		this.appointment = appointment;
-		this.vacation = vacation;
-		this.wH = new ArrayList<WeightHeight>();
-		
-		if (fetalWH == null) return;
-		String x = fetalWH.trim();
+		this.historyMedicals = historyMedicals;
+		this.weight = new ArrayList<WeightHeight>();
+		this.height = new ArrayList<WeightHeight>();
+	
+		if (wH == null || wH.trim().equals("")) return;
+		String x = wH.trim();
 		String tmp[] = x.split(" ");
 		for (int i = 0; i < tmp.length; ++i)
 		{
-			String a = tmp[i].substring(0, 5);
-			float b = Float.parseFloat(tmp[i].substring(6));
-			this.wH.add(new WeightHeight(b, a));
+			try {
+				float w = Float.parseFloat(tmp[i]);
+				this.weight.add(new WeightHeight(w));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (hH == null || hH.trim().equals("")) return;
+		String y = hH.trim();
+		String temp[] = y.split(" ");
+		for (int i = 0; i < temp.length; ++i)
+		{
+			try {
+				int h = Integer.parseInt(temp[i]);
+				this.height.add(new WeightHeight(h));
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -50,7 +71,12 @@ public class Kid extends Person{
 
 	public ArrayList<WeightHeight> getWeight()
 	{
-		return wH;
+		return this.weight;
+	}
+	
+	public ArrayList<WeightHeight> getHeight()
+	{
+		return this.height;
 	}
 	
 	public String getParentName() {
@@ -67,24 +93,15 @@ public class Kid extends Person{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	public String getAppointment() {
-		return appointment;
+
+	public ArrayList<HistoryMedical> getHistoryMedicals() {
+		return historyMedicals;
 	}
 
-	public void setAppointment(String appointment) {
-		this.appointment = appointment;
-	}
-
-	public String getVacation() {
-		return vacation;
-	}
-
-	public void setVacation(String vacation) {
-		this.vacation = vacation;
+	public void setHistoryMedicals(ArrayList<HistoryMedical> historyMedicals) {
+		this.historyMedicals = historyMedicals;
 	}
 	
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -95,6 +112,5 @@ public class Kid extends Person{
 			return false;
 		Kid other = (Kid) obj;
 		return Objects.equals(this.ID, other.ID);
-	}	
-	
+	}
 }

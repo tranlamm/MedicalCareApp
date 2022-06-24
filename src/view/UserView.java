@@ -108,7 +108,7 @@ public class UserView extends JFrame {
 		
 		JButton confirmButton = new JButton("Confirm");
 		confirmButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		confirmButton.setBounds(712, 413, 112, 39);
+		confirmButton.setBounds(850, 350, 112, 39);
 		confirmButton.addActionListener(listener);
 		contentPane.add(confirmButton);
 		
@@ -133,7 +133,7 @@ public class UserView extends JFrame {
 		appointText = new JTextField();
 		appointText.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		appointText.setColumns(10);
-		appointText.setBounds(649, 350, 229, 39);
+		appointText.setBounds(649, 350, 184, 39);
 		contentPane.add(appointText);
 		
 		JLabel lblNewLabel_1_3_1 = new JLabel("Update information");
@@ -144,8 +144,15 @@ public class UserView extends JFrame {
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Date");
 		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_4.setBounds(601, 350, 42, 39);
+		lblNewLabel_1_4.setBounds(597, 350, 42, 39);
 		contentPane.add(lblNewLabel_1_4);
+		
+		JButton btnEvent = new JButton("Event");
+		btnEvent.setForeground(new Color(0, 0, 128));
+		btnEvent.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnEvent.setBounds(679, 422, 178, 62);
+		btnEvent.addActionListener(listener);
+		contentPane.add(btnEvent);
 		
 		this.setVisible(true);
 	}

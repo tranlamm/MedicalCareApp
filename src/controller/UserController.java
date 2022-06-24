@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 
 import dao.MomDAO;
+import view.UserEvent;
 import view.UserView;
 
 public class UserController implements ActionListener{
@@ -27,6 +28,10 @@ public class UserController implements ActionListener{
 			else if (src.equals("Confirm"))
 			{
 				updateAppointment();
+			}
+			else if (src.equals("Event"))
+			{
+				new UserEvent(this.userView);
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

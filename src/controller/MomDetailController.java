@@ -19,13 +19,18 @@ public class MomDetailController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		String src = e.getActionCommand();
-		if (src.equals("Confirm"))
-		{
-			comfirm();
-		}
-		else if (src.equals("Insert"))
-		{
-			insert();
+		try {
+			if (src.equals("Confirm"))
+			{
+				comfirm();
+			}
+			else if (src.equals("Insert"))
+			{
+				insert();
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 	}
 
@@ -56,9 +61,24 @@ public class MomDetailController implements ActionListener {
 		if (weight.equals("") || date.equals("")) return;
 		
 		double w = Double.parseDouble(weight);
-		momDetail.dataset.addValue(w, "Weight", date);
+		momDetail.series1.add(momDetail.count, w);
+		momDetail.count++;
 		
-		String x = date + ":" + weight + " ";
+		if (momDetail.flag == false)
+		{
+			momDetail.series2.add(1, w);
+			momDetail.series2.add(2, w+2);
+			momDetail.series2.add(3, w+4);
+			momDetail.series2.add(4, w+6);
+			momDetail.series2.add(5, w+9);
+			momDetail.series2.add(6, w+12);
+			momDetail.series2.add(7, w+16);
+			momDetail.series2.add(8, w+21);
+			momDetail.series2.add(9, w+26);
+			momDetail.flag = true;
+		}
+		
+		String x = weight + " ";
 		MomDAO.getInstance().updateWeight(momDetail.mom.getID(), x);
 	}
 }

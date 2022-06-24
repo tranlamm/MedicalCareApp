@@ -3,12 +3,10 @@ package view;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-
 import controller.ClinicController;
 import controller.EventController;
 import controller.MomController;
@@ -17,11 +15,8 @@ import model.manager.ManagerClinic;
 import model.manager.ManagerEvent;
 import model.manager.ManagerKid;
 import model.manager.ManagerMom;
-
 import controller.KidController;
-
 import java.awt.Color;
-
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -29,11 +24,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
-import java.awt.Button;
 
 public class MainView extends JFrame {
 	public ManagerMom managerMom;
@@ -73,8 +65,8 @@ public class MainView extends JFrame {
 	// for kid panel
 	public JTable tableKid;
 	public JTextField KidSearchById;
-
-
+	public JTextField KidSearchByName;
+	public ButtonGroup buttonGroupKid;
 	
 	/**
 	 * Create the frame.
@@ -130,11 +122,11 @@ public class MainView extends JFrame {
 		btnEvent.addActionListener(navBarListener);
 		navBar.add(btnEvent);
 		
-		JLabel background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\navBar.jpg"));
-		background.setVerticalAlignment(SwingConstants.TOP);
-		background.setBounds(0, 0, 280, 734);
-		navBar.add(background);
+//		JLabel background = new JLabel("");
+//		background.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\navBar.jpg"));
+//		background.setVerticalAlignment(SwingConstants.TOP);
+//		background.setBounds(0, 0, 280, 734);
+//		navBar.add(background);
 		//end nav bar
 		
 		//main panel
@@ -143,13 +135,10 @@ public class MainView extends JFrame {
 		jPanelEvent();
 		jPanelClinic();
 		
-		contentPane.add(event);
 		contentPane.add(mom);
 		contentPane.add(kid);
+		contentPane.add(event);
 		contentPane.add(clinic);
-		
-		
-
 		//end main panel
 		
 		this.setVisible(true);
@@ -280,10 +269,10 @@ public class MainView extends JFrame {
 		
 		ActionListener kidListener = new KidController(this);
 		
-		JLabel lblNewLabel = new JLabel("TH\u00D4NG TIN KID");
-		lblNewLabel.setForeground(new Color(0, 0, 0));
+		JLabel lblNewLabel = new JLabel("Th\u00F4ng tin tr\u1EBB em");
+		lblNewLabel.setForeground(new Color(0, 0, 128));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblNewLabel.setBounds(420, 10, 206, 48);
+		lblNewLabel.setBounds(456, 11, 239, 48);
 		kid.add(lblNewLabel);
 
 		
@@ -292,12 +281,12 @@ public class MainView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "FirstName","LastName", "Date Of Birth","Gender","Address","PhoneNumber","Email", "ParentName"
+				"ID", "First Name","Last Name", "Date Of Birth", "Gender", "Address", "Phone Num", "Email", "Parent Name"
 			}
 		));
 		tableKid.setRowHeight(tableKid.getRowHeight() + 20);
 		JScrollPane scrollPaneKid = new JScrollPane(tableKid);
-		scrollPaneKid.setBounds(10,174,968,376);
+		scrollPaneKid.setBounds(54,206,885,348);
 		kid.add(scrollPaneKid);
 		
 		
@@ -305,7 +294,7 @@ public class MainView extends JFrame {
 		btnAdd.setForeground(Color.BLACK);
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnAdd.setBackground(Color.BLUE);
-		btnAdd.setBounds(988, 174, 125, 61);
+		btnAdd.setBounds(962, 206, 103, 48);
 		btnAdd.addActionListener(kidListener);
 		kid.add(btnAdd);
 		
@@ -313,7 +302,7 @@ public class MainView extends JFrame {
 		btnEdit.setForeground(Color.BLACK);
 		btnEdit.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnEdit.setBackground(Color.ORANGE);
-		btnEdit.setBounds(988, 251, 125, 61);
+		btnEdit.setBounds(962, 306, 103, 48);
 		btnEdit.addActionListener(kidListener);
 		kid.add(btnEdit);
 		
@@ -321,7 +310,7 @@ public class MainView extends JFrame {
 		btnDelete.setForeground(Color.BLACK);
 		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnDelete.setBackground(Color.RED);
-		btnDelete.setBounds(988, 330, 125, 61);
+		btnDelete.setBounds(962, 406, 103, 48);
 		btnDelete.addActionListener(kidListener);
 		kid.add(btnDelete);
 		
@@ -329,42 +318,69 @@ public class MainView extends JFrame {
 		btnClear.setForeground(Color.BLACK);
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnClear.setBackground(Color.GREEN);
-		btnClear.setBounds(988, 408, 125, 61);
+		btnClear.setBounds(962, 506, 103, 48);
 		btnClear.addActionListener(kidListener);
 		kid.add(btnClear);
-		
-		JButton detailBtn = new JButton("Details");
-		detailBtn.setForeground(new Color(0, 0, 128));
-		detailBtn.setFont(new Font("Tahoma", Font.BOLD, 18));
-		detailBtn.setBounds(988, 488, 127, 62);
-		detailBtn.addActionListener(kidListener);
-		kid.add(detailBtn);
 		
 		JButton btnSearchKid = new JButton("Search");
 		btnSearchKid.setForeground(Color.BLACK);
 		btnSearchKid.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnSearchKid.setBackground(Color.BLUE);
-		btnSearchKid.setBounds(866, 92, 108, 43);
+		btnSearchKid.setBounds(746, 134, 119, 43);
 		btnSearchKid.addActionListener(kidListener);
 		kid.add(btnSearchKid);
-		kid.setVisible(true);
-		
 		
 		KidSearchById = new JTextField();
-		KidSearchById.setText("Your ID...");
+		KidSearchById.setText("ID...");
 		KidSearchById.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		KidSearchById.setColumns(10);
-		KidSearchById.setBounds(282, 91, 562, 48);
+		KidSearchById.setBounds(248, 81, 467, 35);
 		kid.add(KidSearchById);
 
+		KidSearchByName = new JTextField();
+		KidSearchByName.setText("Name...");
+		KidSearchByName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		KidSearchByName.setColumns(10);
+		KidSearchByName.setBounds(248, 139, 467, 35);
+		kid.add(KidSearchByName);
 		
-		JLabel backgroundKid = new JLabel("");
-		backgroundKid.setVerticalAlignment(SwingConstants.TOP);
-		backgroundKid.setIcon(new ImageIcon("https://media.istockphoto.com/photos/blue-medical-background-with-clipboard-and-stethoscope-picture-id1133637775?k=6&m=1133637775&s=170667a&w=0&h=6d-niRIqkUU40zOogpL71nlF9ItDCtSQMppn9MxtM3o="));
-		backgroundKid.setBounds(0, 0, 1125, 730);
-		kid.add(backgroundKid);
+		JRadioButton idRadioKid = new JRadioButton("ID");
+		idRadioKid.setBackground(Color.WHITE);
+		idRadioKid.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		idRadioKid.setBounds(746, 87, 58, 23);
+		kid.add(idRadioKid);
 		
-		kid.setVisible(true);
+		JRadioButton nameRadioKid = new JRadioButton("Name");
+		nameRadioKid.setBackground(Color.WHITE);
+		nameRadioKid.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		nameRadioKid.setBounds(806, 87, 72, 23);
+		kid.add(nameRadioKid);
+		
+		buttonGroupKid = new ButtonGroup();
+		buttonGroupKid.add(idRadioKid);
+		buttonGroupKid.add(nameRadioKid);
+		
+		JButton btnWH = new JButton("Weight Height");
+		btnWH.setForeground(new Color(0, 0, 128));
+		btnWH.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnWH.setBounds(54, 604, 407, 86);
+		btnWH.addActionListener(kidListener);
+		kid.add(btnWH);
+		
+		JButton btnHM = new JButton("History Medical");
+		btnHM.setForeground(new Color(0, 0, 128));
+		btnHM.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnHM.setBounds(532, 604, 407, 86);
+		btnHM.addActionListener(kidListener);
+		kid.add(btnHM);
+		
+//		JLabel backgroundKid = new JLabel("");
+//		backgroundKid.setVerticalAlignment(SwingConstants.TOP);
+//		backgroundKid.setIcon(new ImageIcon("https://media.istockphoto.com/photos/blue-medical-background-with-clipboard-and-stethoscope-picture-id1133637775?k=6&m=1133637775&s=170667a&w=0&h=6d-niRIqkUU40zOogpL71nlF9ItDCtSQMppn9MxtM3o="));
+//		backgroundKid.setBounds(0, 0, 1125, 730);
+//		kid.add(backgroundKid);
+		
+		kid.setVisible(false);
 	}
 	
 	public void jPanelClinic()
@@ -493,8 +509,6 @@ public class MainView extends JFrame {
 		clinic.add(searchBtn);
 		
 		clinic.setVisible(false);
-		
-		//begin
 	}
 	
 	public void jPanelEvent()

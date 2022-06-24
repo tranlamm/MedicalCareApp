@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import dao.MomDAO;
 import model.core.Mom;
+import model.manager.ManagerMom;
 import view.MainView;
 import view.MomDetail;
 import view.MomInput;
@@ -190,7 +191,6 @@ public class MomController implements ActionListener, ControllerInterface{
 		int i_row = this.mainView.tableMom.getSelectedRow();
 		if (i_row < 0)
 			return;
-		Mom tmp = this.mainView.managerMom.search(model_table.getValueAt(i_row, 0) + "");
-		new MomDetail(tmp);
+		new MomDetail(ManagerMom.search(model_table.getValueAt(i_row, 0) + ""));
 	}
 }

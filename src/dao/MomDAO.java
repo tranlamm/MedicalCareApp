@@ -23,8 +23,8 @@ public class MomDAO implements DAOInterface<Mom> {
 			Connection c = JDBCUtil.getConnection();
 			
 			String sql = "INSERT INTO mom (id, firstName, lastName, dateOfBirth, "
-					+ "address, phoneNum, email) "
-					+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+					+ "address, phoneNum, email, weightHistory) "
+					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement pst = c.prepareStatement(sql);
 			pst.setString(1, t.getID());
@@ -34,6 +34,7 @@ public class MomDAO implements DAOInterface<Mom> {
 			pst.setString(5, t.getAddress());
 			pst.setString(6, t.getPhoneNum());
 			pst.setString(7, t.getEmail());
+			pst.setString(8, " ");
 			pst.executeUpdate();
 			
 			JDBCUtil.closeConnection(c);

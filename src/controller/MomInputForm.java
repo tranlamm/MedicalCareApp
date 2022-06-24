@@ -39,7 +39,17 @@ public class MomInputForm implements ActionListener {
 		}
 		String firstName = momInput.firstNameText.getText().trim();
 		String lastName = momInput.lastNameText.getText().trim();
+		if (firstName.equals("") || lastName.equals(""))
+		{
+			momInput.warning.setText("Please Enter Name");
+			return null;
+		}
 		String dob = momInput.dobText.getText().trim();
+		if (dob.equals(""))
+		{
+			momInput.warning.setText("Please Enter DOB");
+			return null;
+		}
 		String address = momInput.addressText.getText().trim();
 		String email = momInput.emailText.getText().trim();
 		String phoneNum = momInput.phoneNumText.getText().trim();
@@ -84,7 +94,7 @@ public class MomInputForm implements ActionListener {
 					tmp.getDateOfBirth(),
 					tmp.getAddress(),
 					tmp.getPhoneNum(),
-					tmp.getEmail(),
+					tmp.getEmail()
 			});
 		}
 	}

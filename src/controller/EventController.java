@@ -128,7 +128,7 @@ public class EventController implements ActionListener, ControllerInterface{
 			}
 			else if (src.equals("Send"))
 			{
-				JOptionPane.showMessageDialog(this.mainView, "Send mail successful");
+				JOptionPane.showMessageDialog(this.mainView, "Send mail error");
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

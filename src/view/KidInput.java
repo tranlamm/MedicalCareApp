@@ -4,16 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
 import controller.KidInputForm;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 
 public class KidInput extends JFrame {
 	public MainView mainView;
@@ -29,7 +25,6 @@ public class KidInput extends JFrame {
 	public JTextField phoneNumTextKid;
 	public JLabel WarnKid;
 	
-
 	public KidInput(MainView mainView) {
 		this.mainView = mainView;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -131,10 +126,10 @@ public class KidInput extends JFrame {
 		WarnKid = new JLabel("");
 		WarnKid.setForeground(new Color(255, 0, 0));
 		WarnKid.setFont(new Font("Tahoma", Font.BOLD, 14));
-		WarnKid.setBounds(70, 502, 114, 26);
+		WarnKid.setBounds(33, 494, 159, 26);
 		contentPane.add(WarnKid);
 		
-		JLabel lblParentname = new JLabel("ParentName");
+		JLabel lblParentname = new JLabel("Parent Name");
 		lblParentname.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblParentname.setBounds(70, 426, 127, 29);
 		contentPane.add(lblParentname);
