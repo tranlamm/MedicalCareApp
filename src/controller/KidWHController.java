@@ -57,7 +57,7 @@ public class KidWHController implements ActionListener{
 		kidWeightHeight.series1H.add(kidWeightHeight.countH, h);
 		kidWeightHeight.countH += 0.5;
 		
-		String x = height + " ";
+		String x = " " + height + " ";
 		KidDAO.getInstance().updateHeight(kidWeightHeight.kid.getID(), x);
 	}
 }
