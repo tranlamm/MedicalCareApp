@@ -12,10 +12,16 @@ import dao.MomDAO;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 import model.core.Mom;
 
 public class UserView extends JFrame {
@@ -47,10 +53,10 @@ public class UserView extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setForeground(new Color(0, 0, 128));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setText("Welcome back " + this.mom.getFirstName() + " " + this.mom.getLastName());
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblNewLabel.setBounds(304, 7, 460, 89);
+		lblNewLabel.setBounds(304, 7, 460, 70);
 		contentPane.add(lblNewLabel);
 		
 		table = new JTable();
@@ -101,12 +107,16 @@ public class UserView extends JFrame {
 		contentPane.add(lblNewLabel_1_3);
 		
 		JButton updateButton = new JButton("Update");
+		updateButton.setBackground(new Color(127, 255, 212));
+		updateButton.setForeground(new Color(0, 0, 0));
 		updateButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		updateButton.setBounds(119, 500, 112, 39);
 		updateButton.addActionListener(listener);
 		contentPane.add(updateButton);
 		
 		JButton confirmButton = new JButton("Confirm");
+		confirmButton.setForeground(new Color(0, 0, 0));
+		confirmButton.setBackground(new Color(127, 255, 212));
 		confirmButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		confirmButton.setBounds(850, 350, 112, 39);
 		confirmButton.addActionListener(listener);
@@ -148,11 +158,24 @@ public class UserView extends JFrame {
 		contentPane.add(lblNewLabel_1_4);
 		
 		JButton btnEvent = new JButton("Event");
-		btnEvent.setForeground(new Color(0, 0, 128));
+		btnEvent.setBackground(new Color(127, 255, 212));
+		btnEvent.setForeground(new Color(0, 0, 0));
 		btnEvent.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnEvent.setBounds(679, 422, 178, 62);
 		btnEvent.addActionListener(listener);
 		contentPane.add(btnEvent);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(176, 224, 230));
+		panel.setBounds(0, 0, 986, 83);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(0, 83, 986, 480);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_2.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(986, 480, Image.SCALE_DEFAULT)));
+
+		contentPane.add(lblNewLabel_2);
 		
 		this.setVisible(true);
 	}

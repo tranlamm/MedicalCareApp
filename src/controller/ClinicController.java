@@ -3,13 +3,16 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import dao.ClinicDAO;
 import dao.MomDAO;
 import model.core.Clinic;
+import model.core.Event;
 import model.manager.ManagerClinic;
 import view.MainView;
 import view.MomInput;
@@ -41,9 +44,9 @@ public class ClinicController implements ActionListener, ControllerInterface{
 				if (tmp.getID().equals(model_table.getValueAt(i, 0)))
 				{
 					model_table.setValueAt(tmp.getClinicName(), i, 1);
-					model_table.setValueAt(tmp.getAddress(), i, 2);
+					model_table.setValueAt(tmp.getEmail(), i, 2);
 					model_table.setValueAt(tmp.getPhoneNum(), i, 3);
-					model_table.setValueAt(tmp.getEmail(), i, 4);
+					model_table.setValueAt(tmp.getAddress(), i, 4);
 					model_table.setValueAt(tmp.getType(), i, 5);
 					break;
 				}
@@ -55,10 +58,10 @@ public class ClinicController implements ActionListener, ControllerInterface{
 			model_table.addRow(new Object[] {
 					tmp.getID(),
 					tmp.getClinicName(),
-					tmp.getAddress(),
-					tmp.getPhoneNum(),
 					tmp.getEmail(),
-					tmp.getType()
+					tmp.getPhoneNum(),
+					tmp.getAddress(),
+					tmp.getType(),
 			});
 		}
 	}
@@ -67,17 +70,13 @@ public class ClinicController implements ActionListener, ControllerInterface{
 	public Clinic getData()
 	{
 		String id = mainView.idClinic.getText().trim();
-//		if (id.equals(""))
-//		{
-//			momInput.warning.setText("Please Enter ID");
-//			return null;
-//		}
+		if (id.equals(""))
+			return null;
 		String name = mainView.nameClinic.getText().trim();
 		String address = mainView.address.getText().trim();
 		String phoneNum = mainView.phoneNumberClinic.getText().trim();
 		String email = mainView.emailClinic.getText().trim();
 		String type = mainView.type.getText().trim();
-//		this.momInput.warning.setText("");
 		
 		return new Clinic(id, name, address, email, phoneNum, type);
 	}
@@ -92,9 +91,9 @@ public class ClinicController implements ActionListener, ControllerInterface{
 		
 		String id = model_table.getValueAt(i_row, 0) + "";
 		String clinicName = model_table.getValueAt(i_row, 1) + "";
-		String address = model_table.getValueAt(i_row, 2) + "";
-		String email = model_table.getValueAt(i_row, 3) + "";
-		String phoneNum = model_table.getValueAt(i_row, 4) + "";
+		String address = model_table.getValueAt(i_row, 4) + "";
+		String email = model_table.getValueAt(i_row, 2) + "";
+		String phoneNum = model_table.getValueAt(i_row, 3) + "";
 		String type = model_table.getValueAt(i_row, 5) + "";
 		
 		this.mainView.idClinic.setText(id);
@@ -130,9 +129,9 @@ public class ClinicController implements ActionListener, ControllerInterface{
 			model_table.addRow(new Object[] {
 					tmp.getID(),
 					tmp.getClinicName(),
-					tmp.getAddress(),
-					tmp.getPhoneNum(),
 					tmp.getEmail(),
+					tmp.getPhoneNum(),
+					tmp.getAddress(),
 					tmp.getType(),
 			});
 		}
@@ -155,13 +154,38 @@ public class ClinicController implements ActionListener, ControllerInterface{
 		model_table.addRow(new Object[] {
 				tmp.getID(),
 				tmp.getClinicName(),
-				tmp.getAddress(),
-				tmp.getPhoneNum(),
 				tmp.getEmail(),
+				tmp.getPhoneNum(),
+				tmp.getAddress(),
 				tmp.getType(),
 		});
 	}
 
+	public void searchByAddress() {
+		DefaultTableModel model_table = (DefaultTableModel) mainView.tableClinic.getModel();
+		int soDong = model_table.getRowCount();
+		for (int i=soDong-1; i>-1; i--)
+		{
+			model_table.removeRow(i);
+		}
+		
+		String name = this.mainView.searchClinic.getText();
+		if (name.equals("")) return;
+		ArrayList<Clinic> list = this.mainView.managerClinic.searchByAddress(name);
+		
+		for (Clinic tmp : list)
+		{
+			model_table.addRow(new Object[] {
+					tmp.getID(),
+					tmp.getClinicName(),
+					tmp.getEmail(),
+					tmp.getPhoneNum(),
+					tmp.getAddress(),
+					tmp.getType(),
+			});
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -190,7 +214,21 @@ public class ClinicController implements ActionListener, ControllerInterface{
 			}
 			else if (src.equals("Search"))
 			{
-				search();
+				String choice = "";
+				Enumeration<AbstractButton> button = this.mainView.buttonGroupClinic.getElements();
+				while (button.hasMoreElements()) 
+				{
+					AbstractButton x = button.nextElement();
+					if (x.isSelected())
+					{
+						choice = x.getText();
+						break;
+					}
+				}
+				if (choice.equals("ID"))
+					search();
+				else if (choice.equals("Address"))
+					searchByAddress();
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

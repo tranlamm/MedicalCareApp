@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dao.ClinicDAO;
 import model.core.Clinic;
+import model.core.Event;
 
 
 public class ManagerClinic {
@@ -41,10 +42,29 @@ public ArrayList<Clinic> listClinic;
 		this.listClinic.add(m);
 	}
 	
+	public ArrayList<Clinic> searchByAddress(String name)
+	{
+		if (name.equals(""))
+			return null;
+		String lowerName = name.toLowerCase();
+		
+		ArrayList<Clinic> list = new ArrayList<Clinic>();
+		for (Clinic x : listClinic)
+		{
+			String lowerX = x.getAddress().toLowerCase();
+			if (lowerX.contains(lowerName))
+			{
+				list.add(x);
+			}
+		}
+		return list;	
+	}
+	
 	public static Clinic search(String id)
 	{
 		return ClinicDAO.getInstance().select(new Clinic(id));
 	}
+	
 	public static boolean isExist(Clinic m)
 	{	
 		Clinic x = ClinicDAO.getInstance().select(m);

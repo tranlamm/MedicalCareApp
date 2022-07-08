@@ -12,9 +12,13 @@ import model.core.HistoryMedical;
 import model.core.Kid;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
@@ -28,6 +32,10 @@ public class KidHistoryMedical extends JFrame {
 	public JTextField searchText;
 	public JTable table;
 	public ArrayList<HistoryMedical> list;
+	/**
+	 * @wbp.nonvisual location=-27,54
+	 */
+	private final JPanel panel = new JPanel();
 	
 	/**
 	 * Create the frame.
@@ -41,6 +49,8 @@ public class KidHistoryMedical extends JFrame {
 		this.list = HistoryMedicalDAO.getInstance().select(this.kid.getID());
 		
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(176, 224, 230));
+		contentPane.setForeground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -94,7 +104,8 @@ public class KidHistoryMedical extends JFrame {
 		contentPane.add(interactionText);
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setForeground(new Color(0, 0, 128));
+		btnSearch.setBackground(new Color(127, 255, 212));
+		btnSearch.setForeground(new Color(0, 0, 0));
 		btnSearch.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSearch.setBounds(634, 74, 102, 35);
 		btnSearch.addActionListener(listener);
@@ -124,18 +135,37 @@ public class KidHistoryMedical extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JButton btnInsert = new JButton("Insert");
-		btnInsert.setForeground(new Color(0, 0, 128));
+		btnInsert.setBackground(new Color(127, 255, 212));
+		btnInsert.setForeground(new Color(0, 0, 0));
 		btnInsert.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnInsert.setBounds(634, 411, 102, 35);
 		btnInsert.addActionListener(listener);
 		contentPane.add(btnInsert);
 		
 		JButton btnReset = new JButton("Reset");
-		btnReset.setForeground(new Color(0, 0, 128));
+		btnReset.setBackground(new Color(127, 255, 212));
+		btnReset.setForeground(new Color(0, 0, 0));
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnReset.setBounds(634, 472, 102, 35);
 		btnReset.addActionListener(listener);
 		contentPane.add(btnReset);	
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBackground(Color.WHITE);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_2.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(782, 435, Image.SCALE_DEFAULT)));
+		
+		lblNewLabel_2.setBounds(0, 128, 782, 435);
+		contentPane.add(lblNewLabel_2);
+		
+//		JLabel backgroundEvent = new JLabel("New label");
+//		backgroundEvent.setBounds(0, 161, 1261, 703);
+//		backgroundEvent.setVerticalAlignment(SwingConstants.TOP);
+//		backgroundEvent.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(1541, 702, Image.SCALE_DEFAULT)));
+//		backgroundEvent.setBounds(0, 161, 1251, 673);
+//		event.add(backgroundEvent);
+//		
+		
 		this.setVisible(true);
 	}
 }

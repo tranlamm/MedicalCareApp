@@ -1,15 +1,19 @@
 package view;
 
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -64,30 +68,46 @@ public class UserEvent extends JFrame {
 		contentPane.add(searchTextEvent);
 		
 		JLabel lblNewLabel = new JLabel("Event");
-		lblNewLabel.setForeground(new Color(0, 0, 128));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblNewLabel.setBounds(458, 11, 83, 37);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.setBackground(new Color(127, 255, 212));
+		btnSearch.setForeground(new Color(0, 0, 0));
 		btnSearch.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSearch.setBounds(758, 68, 139, 37);
 		btnSearch.addActionListener(listener);
 		contentPane.add(btnSearch);
 		
 		JButton btnBook = new JButton("Book");
-		btnBook.setForeground(new Color(0, 0, 128));
+		btnBook.setBackground(new Color(127, 255, 212));
+		btnBook.setForeground(new Color(0, 0, 0));
 		btnBook.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnBook.setBounds(758, 496, 139, 37);
 		btnBook.addActionListener(listener);
 		contentPane.add(btnBook);
 		
 		JButton btnReset = new JButton("Reset");
-		btnReset.setForeground(new Color(0, 0, 128));
+		btnReset.setBackground(new Color(127, 255, 212));
+		btnReset.setForeground(new Color(0, 0, 0));
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnReset.setBounds(588, 496, 139, 37);
 		btnReset.addActionListener(listener);
 		contentPane.add(btnReset);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(176, 224, 230));
+		panel.setBounds(0, 0, 976, 58);
+		contentPane.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 58, 976, 495);
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_1.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(976, 495, Image.SCALE_DEFAULT)));
+		
+		contentPane.add(lblNewLabel_1);
 		
 		this.setVisible(true);
 	}

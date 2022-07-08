@@ -9,6 +9,7 @@ import controller.SignInController;
 
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
@@ -68,7 +69,7 @@ public class SignInView extends JFrame {
 		contentPane.add(labelMatKhau);
 		
 		JLabel lblNewLabel = new JLabel("Sign In");
-		lblNewLabel.setForeground(Color.BLUE);
+		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setBounds(300, 5, 74, 34);
 		contentPane.add(lblNewLabel);
@@ -88,7 +89,7 @@ public class SignInView extends JFrame {
 		contentPane.add(warning);
 		
 		background = new JLabel("");
-		background.setIcon(new ImageIcon("C:\\Users\\Administrator\\Desktop\\security.jpg"));
+		background.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("security.jpg"))));
 		background.setBounds(0, 0, 434, 262);
 		contentPane.add(background);
 	

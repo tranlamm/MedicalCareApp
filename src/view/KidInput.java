@@ -3,11 +3,16 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import controller.KidInputForm;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -24,6 +29,7 @@ public class KidInput extends JFrame {
 	public JTextField emailTextKid;
 	public JTextField phoneNumTextKid;
 	public JLabel WarnKid;
+	private JLabel lblNewLabel_1;
 	
 	public KidInput(MainView mainView) {
 		this.mainView = mainView;
@@ -117,7 +123,8 @@ public class KidInput extends JFrame {
 		contentPane.add(phoneNumTextKid);
 		
 		JButton confirmBtn = new JButton("Confirm");
-		confirmBtn.setForeground(new Color(0, 0, 128));
+		confirmBtn.setBackground(new Color(127, 255, 212));
+		confirmBtn.setForeground(new Color(0, 0, 0));
 		confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 18));
 		confirmBtn.setBounds(220, 479, 208, 62);
 		confirmBtn.addActionListener(listener);
@@ -150,6 +157,13 @@ public class KidInput extends JFrame {
 		genderTextKid.setColumns(10);
 		genderTextKid.setBounds(202, 224, 340, 29);
 		contentPane.add(genderTextKid);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 0, 600, 551);
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_1.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(600, 551, Image.SCALE_DEFAULT)));
+		contentPane.add(lblNewLabel_1);
+		
 		
 		this.setVisible(true);
 	}

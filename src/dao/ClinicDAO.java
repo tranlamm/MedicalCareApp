@@ -129,7 +129,7 @@ public class ClinicDAO implements DAOInterface<Clinic>{
 			
 			while (rs.next())
 			{
-				m.add(new Clinic(rs.getString("id"), rs.getString("clinicName"), rs.getString("address"), rs.getString("email"), rs.getString("phoneNum"),rs.getString("type")));
+				m.add(new Clinic(rs.getString("id"), rs.getString("clinicName"), rs.getString("address"), rs.getString("phoneNum"), rs.getString("email"),rs.getString("type")));
 			}
 			
 			JDBCUtil.closeConnection(c);

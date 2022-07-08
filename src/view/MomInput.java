@@ -3,14 +3,18 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import controller.MomInputForm;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -25,6 +29,8 @@ public class MomInput extends JFrame {
 	public JTextField emailText;
 	public JTextField phoneNumText;
 	public JLabel warning;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 
 	public MomInput(MainView mainView) {
 		this.mainView = mainView;
@@ -118,7 +124,8 @@ public class MomInput extends JFrame {
 		contentPane.add(phoneNumText);
 		
 		JButton confirmBtn = new JButton("Confirm");
-		confirmBtn.setForeground(new Color(0, 0, 128));
+		confirmBtn.setBackground(new Color(127, 255, 212));
+		confirmBtn.setForeground(new Color(0, 0, 0));
 		confirmBtn.setFont(new Font("Tahoma", Font.BOLD, 18));
 		confirmBtn.setBounds(202, 389, 208, 62);
 		confirmBtn.addActionListener(listener);
@@ -129,6 +136,19 @@ public class MomInput extends JFrame {
 		warning.setFont(new Font("Tahoma", Font.BOLD, 14));
 		warning.setBounds(24, 408, 173, 26);
 		contentPane.add(warning);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 0, 586, 463);
+		contentPane.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(0, 0, 586, 463);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_2.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(586, 463, Image.SCALE_DEFAULT)));
+		contentPane.add(lblNewLabel_2);
+		
+
+		
 		
 		this.setVisible(true);
 	}

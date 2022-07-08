@@ -27,14 +27,14 @@ public class SignInController implements ActionListener {
 			
 			if (taiKhoan.equals("") || matKhau.equals(""))
 			{
-				this.signInView.setText("Vui lòng nhập tài khoản");
+				this.signInView.setText("Please enter account or pass");
 			}
 			else
 			{
 				Account x = AccountDAO.getInstance().select(new Account(taiKhoan, matKhau));
 				if (x == null)
 				{
-					this.signInView.setText("Sai tài khoản hoặc mật khẩu");
+					this.signInView.setText("Wrong account or password");
 				}
 				else
 				{

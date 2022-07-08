@@ -22,10 +22,14 @@ import model.core.WeightHeight;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import java.awt.BasicStroke;
@@ -123,14 +127,16 @@ public class MomDetail extends JFrame {
 		contentPane.add(weightText);
 		
 		JButton insertBtn = new JButton("Insert");
-		insertBtn.setForeground(new Color(0, 0, 128));
+		insertBtn.setBackground(new Color(127, 255, 212));
+		insertBtn.setForeground(new Color(0, 0, 0));
 		insertBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		insertBtn.setBounds(781, 220, 121, 33);
 		insertBtn.addActionListener(listener);
 		contentPane.add(insertBtn);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setForeground(new Color(0, 0, 128));
+		btnConfirm.setBackground(new Color(127, 255, 212));
+		btnConfirm.setForeground(new Color(0, 0, 0));
 		btnConfirm.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnConfirm.setBounds(781, 618, 121, 33);
 		btnConfirm.addActionListener(listener);
@@ -149,6 +155,15 @@ public class MomDetail extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(40,435,635,79);
 		contentPane.add(scrollPane);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 0, 986, 663);
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_1.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(986, 663, Image.SCALE_DEFAULT)));
+		contentPane.add(lblNewLabel_1);
+		
+		
+		
 		DefaultTableModel model_table = (DefaultTableModel) table.getModel();
 		model_table.setValueAt(mom.getAppointment(), 0, 0);
 		model_table.setValueAt(mom.getHealthStatus(), 0, 1);

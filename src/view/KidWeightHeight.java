@@ -21,9 +21,13 @@ import model.core.Kid;
 import model.core.WeightHeight;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class KidWeightHeight extends JFrame {
@@ -67,7 +71,7 @@ public class KidWeightHeight extends JFrame {
 		JLabel lblNewLabel = new JLabel("Weight & Height");
 		lblNewLabel.setForeground(new Color(0, 0, 128));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
-		lblNewLabel.setBounds(482, 25, 222, 54);
+		lblNewLabel.setBounds(477, 20, 222, 54);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Age");
@@ -115,18 +119,31 @@ public class KidWeightHeight extends JFrame {
 		contentPane.add(heightText);
 		
 		JButton weightBtn = new JButton("Add Weight");
-		weightBtn.setForeground(new Color(0, 0, 128));
+		weightBtn.setBackground(new Color(127, 255, 212));
+		weightBtn.setForeground(new Color(0, 0, 0));
 		weightBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		weightBtn.setBounds(330, 520, 141, 44);
 		weightBtn.addActionListener(listener);
 		contentPane.add(weightBtn);
 		
 		JButton heightBtn = new JButton("Add Height");
-		heightBtn.setForeground(new Color(0, 0, 128));
+		heightBtn.setBackground(new Color(127, 255, 212));
+		heightBtn.setForeground(new Color(0, 0, 0));
 		heightBtn.setFont(new Font("Tahoma", Font.BOLD, 14));
 		heightBtn.setBounds(913, 520, 141, 44);
 		heightBtn.addActionListener(listener);
 		contentPane.add(heightBtn);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(0, 85, 1186, 578);
+		lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_2.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().createImage(MainView.class.getResource("medical.jpg")).getScaledInstance(1186, 578, Image.SCALE_DEFAULT)));
+		contentPane.add(lblNewLabel_2);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(176, 224, 230));
+		panel.setBounds(0, 0, 1186, 85);
+		contentPane.add(panel);
 		
 		this.setVisible(true);
 	}
