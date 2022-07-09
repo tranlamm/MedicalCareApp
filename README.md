@@ -1,17 +1,5 @@
-# MedicalCareApp
-Phần mềm quản lý y tế
-# require 
-# ----Database----
-# xampp https://www.apachefriends.org/index.html
-# heidisql https://www.heidisql.com/download.php (rename -> localhost)
-
-# ----Java swing tool build gui----
-# window builder https://www.eclipse.org/windowbuilder/
-# jfreechart https://sourceforge.net/projects/jfreechart/files/
-
-# ----JDK----
-# jdk https://adoptopenjdk.net/
-# ----eclipse----
-# https://www.eclipse.org/downloads/
-#----jfreechart----
-#https://sourceforge.net/projects/jfreechart/files/
+#MEDICAL CARE APP
+#Phần mềm quản lý sức khỏe - Project nhóm 3 OOP lớp 132623
+#Cách cài đặt và chạy chương trình:
+Kính mời thầy và các bạn cài đặt theo phần phụ lục đã có trong file báo cáo word,
+các câu lệnh truy vấn sql đã có trong file createDatabase.sql và insertData.sql
