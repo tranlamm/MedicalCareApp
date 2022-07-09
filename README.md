@@ -5,3 +5,5 @@ and use 2 attached file - createDatabase.sql and insertData.sql.
 
 -- We hope you enjoy our app --
 ---- Thank you very much ----
+
+Made by Tran Lam & Pham Duc Chinh & Dang Danh Dung & To Cao Hoang & Eang Sokunthea
