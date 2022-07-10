@@ -34,12 +34,15 @@ public class Kid extends Person{
 		String tmp[] = x.split(" ");
 		for (int i = 0; i < tmp.length; ++i)
 		{
-			try {
-				float w = Float.parseFloat(tmp[i]);
-				this.weight.add(new WeightHeight(w));
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(!tmp[i].equals(" "))
+			{
+				try {
+					float w = Float.parseFloat(tmp[i].trim());
+					this.weight.add(new WeightHeight(w));
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		
@@ -48,12 +51,15 @@ public class Kid extends Person{
 		String temp[] = y.split(" ");
 		for (int i = 0; i < temp.length; ++i)
 		{
-			try {
-				int h = Integer.parseInt(temp[i]);
-				this.height.add(new WeightHeight(h));
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(!(temp[i].equals(" ") || temp[i].equals("")))
+			{
+				try {
+					int h = Integer.parseInt(temp[i].trim());
+					this.height.add(new WeightHeight(h));
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}

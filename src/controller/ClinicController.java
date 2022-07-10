@@ -74,8 +74,8 @@ public class ClinicController implements ActionListener, ControllerInterface{
 			return null;
 		String name = mainView.nameClinic.getText().trim();
 		String address = mainView.address.getText().trim();
-		String phoneNum = mainView.phoneNumberClinic.getText().trim();
-		String email = mainView.emailClinic.getText().trim();
+		String phoneNum = mainView.emailClinic.getText().trim();
+		String email = mainView.phoneNumberClinic.getText().trim();
 		String type = mainView.type.getText().trim();
 		
 		return new Clinic(id, name, address, email, phoneNum, type);
