@@ -58,11 +58,11 @@ public class ManagerMom {
 	{
 		ArrayList<Mom> m = new ArrayList<Mom>();
 		
-		String tmp = name.toLowerCase();
+		String tmp = name.toLowerCase().trim();
 		for (Mom x:listMom)
 		{
-			String fullName = (x.getFirstName() + " " + x.getLastName()).toLowerCase();
-			if (tmp.equals(fullName))
+			String fullName = (x.getFirstName() + " " + x.getLastName()).toLowerCase().trim();
+			if (fullName.contains(tmp))
 			{
 				m.add(x);
 			}

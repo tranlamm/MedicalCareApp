@@ -58,11 +58,11 @@ public class ManagerKid {
 	{
 		ArrayList<Kid> k = new ArrayList<Kid>();
 		
-		String tmp = name.toLowerCase();
+		String tmp = name.toLowerCase().trim();
 		for (Kid x:listKid)
 		{
-			String fullName = (x.getFirstName() + " " + x.getLastName()).toLowerCase();
-			if (tmp.equals(fullName))
+			String fullName = (x.getFirstName() + " " + x.getLastName()).toLowerCase().trim();
+			if (fullName.contains(tmp))
 			{
 				k.add(x);
 			}

@@ -180,7 +180,7 @@ public class MomController implements ActionListener, ControllerInterface{
 					tmp.getDateOfBirth(),
 					tmp.getAddress(),
 					tmp.getPhoneNum(),
-					tmp.getEmail(),
+					tmp.getEmail()
 			});
 		}
 	}
